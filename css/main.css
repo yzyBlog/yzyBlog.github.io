@@ -1822,7 +1822,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffc81b;
+  background: #dd0eb4;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2686,7 +2686,9 @@ a:visited {
   background: url("http://pic03.babytreeimg.com/foto3/common_photo/original/2017/1127/755c9a4676471680.jpg") no-repeat;
   background-size: cover;
 }
-.use-motion .brand {
+.use-motion .brand,
+.sidebar-toggle,
+.back-to-top {
   background: #5f9ea0;
 }
 .powered-by,
