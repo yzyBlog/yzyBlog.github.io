@@ -1822,7 +1822,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #0f4bff;
+  background: #f1c;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2685,10 +2685,12 @@ a:visited {
 .headband {
   height: 0;
 }
-.main-inner {
-  background-color: rgba(255,255,255,0.7);
-  border-radius: 20px;
-  padding: 10px;
+@media (min-width: 767px) {
+  .main-inner {
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 20px;
+    padding: 10px;
+  }
 }
 .use-motion .brand,
 .sidebar-toggle,
