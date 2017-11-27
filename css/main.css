@@ -1822,7 +1822,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffd5d6;
+  background: #c6f629;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2663,6 +2663,8 @@ html,
 body {
   cursor: url("http://7xtj5b.com1.z0.glb.clouddn.com/qingzzcn_mijindukou/images/default.cur"), default;
 }
+.sidebar-toggle,
+.back-to-top,
 #zan-block .zan-dynamic,
 #zan-block .zan-dynamic i,
 #zan-block .zan-dynamic:hover,
