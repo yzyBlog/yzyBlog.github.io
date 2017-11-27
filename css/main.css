@@ -1822,7 +1822,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #c7265e;
+  background: #ffd5d6;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2663,12 +2663,24 @@ html,
 body {
   cursor: url("http://7xtj5b.com1.z0.glb.clouddn.com/qingzzcn_mijindukou/images/default.cur"), default;
 }
+#zan-block .zan-dynamic,
+#zan-block .zan-dynamic i,
+#zan-block .zan-dynamic:hover,
+#zan-block .zan-num,
+#zan-block .zan-txt,
+.zan-dynamic,
+.zan-single,
+a,
+a:active,
+a:hover,
+a:link,
+a:visited {
+  cursor: url("http://7xtj5b.com1.z0.glb.clouddn.com/qingzzcn_mijindukou/images/pointer.cur"), pointer;
+}
 .headband {
   position: fixed;
   width: 100%;
   height: 100%;
-  left: 0;
-  top: 0;
   background: url("http://pic03.babytreeimg.com/foto3/common_photo/original/2017/1127/755c9a4676471680.jpg") no-repeat;
   background-size: cover;
 }
