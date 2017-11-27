@@ -1822,7 +1822,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff05ff;
+  background: #5eff30;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2681,6 +2681,14 @@ a:hover,
 a:link,
 a:visited {
   cursor: url("http://7xtj5b.com1.z0.glb.clouddn.com/qingzzcn_mijindukou/images/pointer.cur"), pointer;
+}
+.headband {
+  height: 0;
+}
+.main-inner {
+  background-color: rgba(255,255,255,0.7);
+  border-radius: 20px;
+  padding: 10px;
 }
 .use-motion .brand,
 .sidebar-toggle,
