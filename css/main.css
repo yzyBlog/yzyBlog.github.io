@@ -1822,7 +1822,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff605c;
+  background: #2f3dff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2662,6 +2662,9 @@ embed {
 html,
 body {
   cursor: url("http://7xtj5b.com1.z0.glb.clouddn.com/qingzzcn_mijindukou/images/default.cur"), default;
+  background: url("http://7xtj5b.com1.z0.glb.clouddn.com/qingzzcn_mijindukou/images/templateback.jpg") no-repeat rgba(194,240,194,0.6);
+  background-attachment: fixed;
+  background-size: cover;
 }
 .sidebar-toggle,
 .back-to-top,
@@ -2678,13 +2681,6 @@ a:hover,
 a:link,
 a:visited {
   cursor: url("http://7xtj5b.com1.z0.glb.clouddn.com/qingzzcn_mijindukou/images/pointer.cur"), pointer;
-}
-.headband {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: url("http://pic03.babytreeimg.com/foto3/common_photo/original/2017/1127/755c9a4676471680.jpg") no-repeat center bottom;
-  background-size: cover;
 }
 .use-motion .brand,
 .sidebar-toggle,
