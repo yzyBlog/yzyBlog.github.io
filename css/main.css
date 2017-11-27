@@ -1822,7 +1822,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #1ae9d5;
+  background: #241766;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2732,7 +2732,7 @@ embed {
     background: rgba(0,153,153,0.8);
   }
 }
-@media (max-width: 767px) {
+@media (max-width: 766px) {
   .headband {
     position: fixed;
     width: 100%;
