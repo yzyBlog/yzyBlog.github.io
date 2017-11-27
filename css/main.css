@@ -1822,7 +1822,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #fff;
+  background: #8cece8;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2658,4 +2658,8 @@ embed {
 }
 .links-of-blogroll-inline .links-of-blogroll-item {
   display: inline-block;
+}
+html,
+body {
+  cursor: url("http://7xtj5b.com1.z0.glb.clouddn.com/qingzzcn_mijindukou/images/default.cur"), default;
 }
