@@ -157,7 +157,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">一天进步一点</p>
       
   </div>
 
@@ -588,6 +588,878 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/04/vim/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zongyi Yin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog_photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/04/vim/" itemprop="url">vim常用命令总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-04T19:48:55+08:00">
+                2017-11-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>打开文件 vim xxxx(文件名)   vim index.js<br>保存  :w<br>退出 :q<br>保存退出 :wq<br>强制退出    :q!</p>
+<hr>
+<p>###1.删除字符 x<br>要删除一个字符，只需要将光标移到该字符上按下“x”。</p>
+<p>###2.删除一行 dd<br>删除一整行内容使用“dd”命令。删除后下面的行会移上来填补空缺。</p>
+<p>###3.删除换行符 J<br>在vim中你可以把两行合并为一行，也就是说两行之间的换行符被删除了。命令是”J”。</p>
+<p>###4.撤销 u<br>如果你误删了过多的内容。显然你可以再输入一遍，但是命令”u” 更简便，它可以撤消上一次的操作。</p>
+<p>###5.重做<br>如果你撤消了多次，你还可以用CTRL-R(重做)来反转撤消的动作。换句话说，它是对撤消的撤消。撤消命令还有另一种形式，”U”命令，它一次撤消对一行的全部操作。第二次使用该命令则会撤消前一个”U”的操作。用”u”和CTRL-R你可以找回任何一个操作状态。</p>
+<p>###6.追加<br>“i”命令可以在当前光标之前插入文本。<br>“a”命令可以在当前光标之后插入文本。<br>“o”命令可以在当前行的下面另起一行，并使当前模式转为Insert模式。<br>“O”命令(注意是大写的字母O)将在当前行的上面另起一行。</p>
+<p>###7.使用命令计数<br>假设你要向上移动9行。这可以用”kkkkkkkkk”或”9k”来完成。删除3个字符可以用”3x”。</p>
+<p>###8.退出<br>要退出Vim，用命令”ZZ”。该命令保存当前文件并退出Vim。</p>
+<p>###9.放弃编辑<br>丢弃所有的修改并退出，用命令”:q!”。用”:e!”命令放弃所有修改并重新载入该文件的原始内容。</p>
+<p>###10.以Word为单位的移动<br>使用”w”命令可以将光标向前移动一个word的首字符上；比如”3w”将光标向前移动3个words。”b”命令则将光标向后移动到前一个word的首字符上。<br>“e”命令会将光标移动到下一个word的最后一个字符。命令”ge”，它将光标移动到前一个word的最后一个字符上。</p>
+<p>###11.移动到行首或行尾<br>“\$”命令将光标移动到当前行行尾。”^”命令将光标移动到当前行的第一个非空白字符上。”0”命令则总是把光标移动到当前行的第一个字符上。”\$”命令还可接受一个计数，如”1\$”会将光标移动到当前行行尾，”2\$”则会移动到下一行的行尾，如此类推。”0”命令却不能接受类似这样的计数，命令”^”前加上一个计数也没有任何效果。</p>
+<p>###12.移动到指定字符上<br>命令”fx”在当前行上查找下一个字符x（向右方向），可以带一个命令计数”F”命令向左方向搜索。”tx”命令形同”fx”命令，只不过它不是把光标停留在被搜索字符上，而是在它之前的一个字符上。提示：”t”意为”To”。该命令的反方向版是”Tx”。这4个命令都可以用”;”来重复。以”,”也是重复同样的命令，但是方向与原命令的方向相反。</p>
+<p>###13.以匹配一个括号为目的移动<br>用命令”%”跳转到与当前光标下的括号相匹配的那一个括号上去。如果当前光标在”(“上，它就向前跳转到与它匹配的”)”上，如果当前在”)”上，它就向后自动跳转到匹配的”(“上去。</p>
+<p>###工作上常用到的<br>查找  / </p>
+<p>最后一行 shift +g      《》 G</p>
+<p>第一行    gg</p>
+<p>跳转到 第 n行     ngg</p>
+<p>  %s/\r//g       去掉 ^m</p>
+<p>%s/\t/\            替换空格 </p>
+<p> dd：剪切当前行</p>
+<p> 4 ndd：n表示大于1的数字，剪切n行</p>
+<p>yy：复制当前行</p>
+<p>nyy：n表示大于1的数字，复制n行</p>
+<p>P 粘贴</p>
+<p>ctrl z  退出到终端            fg 1、2、3 跳转vim打开的文件（打开多个文件时）</p>
+<p>$ npm -g install js-beautify</p>
+<p>$ js-beautify foo.js</p>
+<p>:%s/\r//g                   : 删除DOS方式的回车^M</p>
+<p>:%s=  *$==                  : 删除行尾空白</p>
+<p>:%s/ *$// 去掉行尾的所有空格。</p>
+<p>:%s/\t/    /g     tab替换成空格。批量替换</p>
+<p>vimgrep /pattern/ %           在当前打开文件中查找</p>
+<p>vimgrep /pattern/ *             在当前目录下查找所有</p>
+<p>vimgrep /pattern/ **            在当前目录及子目录下查找所有</p>
+<p>vimgrep /pattern/ *.c          查找当前目录下所有.c文件</p>
+<p>vimgrep /pattern/ <em>*/</em>         只查找子目录</p>
+<p>brew install vim –with-lua –with-override-system-vim   vim 升级</p>
+<p>批量注释</p>
+<p>ctrl+v 进入列编辑模式,向下或向上移动光标,把需要注释的行的开头标记起来,然后按大写的I(shift+i),再插入注释符,比如”//“,再按Esc,就会全部注释了</p>
+<p>ctrl+v     选择    shiit+i    //    esc</p>
+<p>批量去掉注释</p>
+<p>ctrl+v,进入列编辑模式,横向选中列的个数(如”//“注释符号,需要选中两列),然后按d, 就会删除注释符号</p>
+<p>删除列</p>
+<p>1.光标定位到要操作的地方。</p>
+<p>2.CTRL+v 进入“可视 块”模式，选取这一列操作多少行。</p>
+<p>3.d 删除。</p>
+<p>插入列</p>
+<p>插入操作的话知识稍有区别。例如我们在每一行前都插入”() “：</p>
+<p>1.光标定位到要操作的地方。</p>
+<p>2.CTRL+v 进入“可视 块”模式，选取这一列操作多少行。</p>
+<p>3.SHIFT+i(I) 输入要插入的内容。</p>
+<p>4.ESC 按两次，会在每行的选定的区域出现插入的内容。</p>
+<p>###快捷命令</p>
+<p>x 删除当前光标下的字符(“dl”的快捷命令)<br>X 删除当前光标之前的字符(“dh”的快捷命令)<br>D 删除自当前光标至行尾的内容(“d$”的快捷命令)<br>dw 删除自当前光标至下一个word的开头<br>db 删除自当前光标至前一个word的开始<br>diw 删除当前光标所在的word(不包括空白字符)<br>daw 删除当前光标所在的word(包括空白字符)<br>dG 删除当前行至文件尾的内容<br>dgg 删除当前行至文件头的内容<br>如果你用”c”命令代替”d”这些命令就都变成更改命令。使用”y”就是yank命令，如此类推。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/24/git/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zongyi Yin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog_photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/24/git/" itemprop="url">git常用命令总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-24T20:00:55+08:00">
+                2017-10-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>git clone xxx  下载到本地</p>
+<p>git remote -v 查看远程仓库地址</p>
+<p>git checkout xx分支（切换分支）</p>
+<p>git log </p>
+<p>git log  -oneline</p>
+<p>git status </p>
+<p>git add    git add *</p>
+<p>$ git commit -m “hello world”  提交</p>
+<p> git commit -a -m ‘’  保存并提交</p>
+<p>git checkout – softgames_game.js    可以丢弃工作区的修改：</p>
+<p>git branch 查看分支</p>
+<p>git pull 获取远程分支。。。。。。。。。。</p>
+<p>git branch -r 查看远程分支</p>
+<p>git branch test   创建分支</p>
+<p>git branch test  切换分支</p>
+<p>git  pull  origin  <branch></branch></p>
+<p>git push origin <branch></branch></p>
+<p>git reset –hard FETCH_HEAD 撤销到最近</p>
+<p>###工作上常用到的<br>git checkout dev<br>git pull<br>git checkout -b 170724_queqiao_v1_dev dev<br><em>//分支形式:170724_queqiao_v1_dev</em><br>git status<br>git commit -am f<br>git push origin 170724_queqiao_v1_dev<br>arc diff<br>git pull origin 170724_queqiao_v1_dev<br>git push origin 170724_queqiao_v1_dev</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/04/array/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zongyi Yin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog_photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/04/array/" itemprop="url">数组一些常用方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-04T20:58:55+08:00">
+                2017-08-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>####数组一些常用方法（es5新增）</p>
+<ul>
+<li>forEach() 遍历数组，并为每个元素调用传入的函数<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var a = [1,2,3];</div><div class="line">var sum = 0;</div><div class="line">//传一个参数</div><div class="line">a.forEach(function(v)&#123;</div><div class="line">	sum += v;</div><div class="line">&#125;);</div><div class="line">console.log(sum);//6</div><div class="line">//传三个参数(元素值,索引,数组本身)</div><div class="line">a.forEach(function(v,i,a)&#123;</div><div class="line">	a[i]=v+1;//为数组的各元素自加1</div><div class="line">	console.log(i); //0 1 2</div><div class="line">	console.log(v); //1 2 3</div><div class="line">&#125;)	</div><div class="line">console.log(a);//[2,3,4]</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>&emsp;&emsp;显而易见，forEach方法中的function回调支持3个参数，第1个是遍历的数组内容；第2个是对应的数组索引，第3个是数组本身。</p>
+<ul>
+<li><p>map() 将调用该函数的数组的每个元素都传入指定函数，并返回运算后的新数组；注意：该函数不修改原数组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var a = [1,2,3];</div><div class="line">var b = a.map(function(x)&#123;</div><div class="line">  return x*x;</div><div class="line">&#125;)</div><div class="line">console.log(b);//[1,4,9]</div></pre></td></tr></table></figure>
+</li>
+<li><p>filter() 将调用该函数的数组的每个元素传入指定函数进行判定,若判定为true,则返回.最终返回一个符合指定条件(函数)的元素的集合(该集合为原数组的子集)。注:该函数会跳过稀疏数组中缺少的元素,总是返回稠密数组,利用此特性可以压缩稀疏数组.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var a = [1,2,3];</div><div class="line">    var c = a.filter(function(x)&#123;</div><div class="line">	    return x&lt;3;</div><div class="line">    &#125;)</div><div class="line">console.log(c);//[1, 2]</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var a = [ ,1,null,3,4, ,];</div><div class="line">console.log(a.length);//6</div><div class="line">var dense = a.filter(function()&#123;</div><div class="line">    return true;//过滤掉undefined</div><div class="line">&#125;);</div><div class="line">console.log(dense);//[1,null,3,4]</div><div class="line">console.log(a);//Array(6) [undefined × 1, 1, null, 3, 4, undefined × 1]未改变原有数组</div><div class="line">var c = a.filter(function(x)&#123;</div><div class="line">	return x!=undefined &amp;&amp; x != null;</div><div class="line">&#125;);</div><div class="line">console.log(c);//Array(3) [1, 3, 4]</div></pre></td></tr></table></figure>
+<ul>
+<li>every() 遍历调用该方法数组的每个元素,判定是否符合指定条件(函数),全部符合则返回true;注意空数组调用时返回true;</li>
+<li>some() 遍历调用该方法数组的每个元素,判定是否符合指定条件(函数),只要有一个符合则返回true;注意空数组调用时返回false;<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var a = [1,2,3,4,5];</div><div class="line">var b = a.every(function(x)&#123;</div><div class="line">	return x &gt;0;//判定是否所有元素均大于0</div><div class="line">&#125;);</div><div class="line">console.log(b);//true</div><div class="line">var c = a.some(function(x)&#123;</div><div class="line">	return x &lt; 4; //判定是否有元素小于4</div><div class="line">&#125;);</div><div class="line">console.log(c);//true</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//空数组调用</div><div class="line">var d = [];</div><div class="line">console.log(d.every(function(x)&#123;</div><div class="line">	return x;</div><div class="line">&#125;));//true</div><div class="line">console.log(d.some(function(x)&#123;</div><div class="line">	return x;</div><div class="line">&#125;));//false</div></pre></td></tr></table></figure>
+<ul>
+<li>reduce()和reduceRight()</li>
+</ul>
+<p>语法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">array.reduce(callbackfn,[initialValue])</div></pre></td></tr></table></figure></p>
+<p>reduce()方法接收callbackfn函数，而这个函数包含四个参数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function callbackfn(preValue,curValue,index,array)&#123;&#125;</div></pre></td></tr></table></figure></p>
+<ol>
+<li>preVallue：上一次调用回调返回的值，或者是提供的初始的初始值（initialValue）</li>
+<li>curValue：数组中当前被处理的数组项</li>
+<li>index：当前数组项在数组中的索引值</li>
+<li>array：调用reduce()方法的数组</li>
+</ol>
+<p>而initialValue作为第一次调用 callbackfn函数的第一个参数。</p>
+<p>reduce()方法为数组中的每一个元素依次执行回调函数callbackfn，不包括数组中被删除或从未被赋值的元素，接受四个参数：初始值（或者上一次回调函数的返回值），当前元素值，当前索引，调用 reduce() 的数组。</p>
+<p>回调函数第一次执行时，preValue 和 curValue 可以是一个值，如果 initialValue 在调用 reduce() 时被提供，那么第一个 preValue 等于 initialValue ，并且curValue 等于数组中的第一个值；如果initialValue 未被提供，那么preValue 等于数组中的第一个值，curValue等于数组中的第二个值。</p>
+<p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var arr = [0,1,2,3,4]; </div><div class="line">arr.reduce(function (preValue,curValue,index,array) &#123; </div><div class="line">	return preValue + curValue;</div><div class="line">&#125;); //10</div></pre></td></tr></table></figure></p>
+<p>第一次回调: 0  1  1  [0,1,2,3,4]   返回值1<br>第二次回调: 1  2  2  [0,1,2,3,4]   返回值3<br>第三次回调: 3  3  3  [0,1,2,3,4]   返回值6<br>第四次回调: 6  4  4  [0,1,2,3,4]   返回值10</p>
+<p>提供一个初始值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var arr = [0,1,2,3,4]; </div><div class="line">arr.reduce(function (preValue,curValue,index,array) &#123; </div><div class="line">	return preValue + curValue; </div><div class="line">&#125;, 5); //15</div></pre></td></tr></table></figure></p>
+<p>第一次回调: 5    0    0  [0,1,2,3,4]   返回值5<br>第二次回调: 5    1    1  [0,1,2,3,4]   返回值6<br>第三次回调: 6    2    2  [0,1,2,3,4]   返回值8<br>第四次回调: 8    3    3  [0,1,2,3,4]   返回值11<br>第四次回调: 11  4    4  [0,1,2,3,4]   返回值15</p>
+<p>实现数组的求和<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var arr = [1,2,3,4,5,6]; </div><div class="line">Array.prototype.sum = function ()&#123; </div><div class="line">	var sumResult = 0;</div><div class="line">	return this.reduce(function (preValue, curValue) &#123; </div><div class="line">		return sumResult = preValue + curValue; </div><div class="line">	&#125;); </div><div class="line">	return sumResult; </div><div class="line">&#125; </div><div class="line">arr.sum(); // 21</div></pre></td></tr></table></figure></p>
+<p>reduceRight()方法的功能和reduce()功能是一样的，不同的是reduceRight()从数组的末尾向前将数组中的数组项做累加。</p>
+<ul>
+<li>indexOf()和lastIndexOf()</li>
+</ul>
+<p>返回给定索引值的元素,lastIndexOf()从右往左搜索;若没有找到,则返回-1;<br>注意:该函数可接收两个参数,第一个参数为需要搜索的索引;第二个为开始搜索的位置(可选)；两个参数都不为函数。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/14/regExp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zongyi Yin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog_photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/14/regExp/" itemprop="url">正则表达式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-14T20:58:55+08:00">
+                2017-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p><strong>正则表达式</strong>是一种在字符串数据里表示模式的语言。它们组成了一种小型且独立的语言，镶入在JavaScript里。这种语言非常的简洁，尽管其可读性不是很强—大型正则表达式往往就像卡通人物的咒语一样。总之，它们是一种很强大的工具，能够真正简化字符串处理程序。</p>
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><p>&emsp;&emsp;与将字符串写在引号里的方式相同，正则表达式写在斜杠（/）之间。字符串的search方法与indexOf类似，indexOf返回找到参数的位置，但search的参数是一个正则表达式而非字符串：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&quot;zhengzebiaodashi&quot;.search(/biao/);  </div><div class="line">=&gt;  7</div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;由于斜杠通常表明了正则表达式的结束，表达式里的斜杠则必须通过反斜杠进行转义。例如，我们定义一个正则表达式，它只包含一个斜杠：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var reg = /\//;</div><div class="line">&quot;ab/cd&quot;.search(reg);</div><div class="line">=&gt; 2</div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;正则表达式指定的模式可以完成一些字符串不能完成的工作。例如，它们允许一些元素匹配多个单字符串。</p>
+<p>###匹配字符集<br>&emsp;&emsp;我们需要在一段字符串里查找第一个星号或者左大括号。可以用正则表达式来完成这项工作，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var reg1 = /[\&#123;\*]/;</div><div class="line">var story = &quot;Adversity *successfully* overcome is the highest glory.&quot;;</div><div class="line">story.search(reg1);</div><div class="line">=&gt; 10</div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;在正则表达式里，中括号“[“和“]”有着特殊的意义。它包含一个字符列表，只是其中一个字符被找到即可被匹配上。大多数标点符号在正则表达式中都有特殊的意义，因此，如果要用它们来表示实际字符的话，最好用反斜杠对齐转义。<br>&emsp;&emsp;有些字符在正则表达式里指的是整个字符集。点（.）用来表示“任何不是换行符的字符”；转义d（/d）表示“任意数字”；转义w（/w）匹配任何单词（也就是任何英文、数字和下划线构成的字符）。转义s（/s）匹配任何空字符（例如Tab、换行和空格）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var reg2 = /\s\d\s/;</div><div class="line">&quot;1a 2 3b&quot;.search(reg2);</div><div class="line">=&gt; 2</div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;可以用大写字符替换相应的\d、\w、和\s来反转正则表达式的意义。例如，\S匹配任何不是空字符串的字符，\W匹配任何非单词字符。等价于“[^A-Za-z0-9_]”，\D匹配一个非数字字符。等价于[^0-9]。使用中括号[和]时，反转模式可以以^字符开始：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var notABCReg = /[^ABC]/;</div><div class="line">&quot;ABCBACCBBADABC&quot;.search(notABC);</div><div class="line">=&gt; 10</div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;根据我们现在所知道的，可以编写一个匹配XX/XX/XXXX格式日期的正则表达式（这里的X是数字）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var dataReg = /\d\d\/\d\d\/\d\d\d\d/;</div><div class="line">&quot;born 15/11/2003 (mother Spot): white Fang&quot;.search(dataReg);</div><div class="line">=&gt; 5</div></pre></td></tr></table></figure></p>
+<h4 id="匹配单词和字符边界"><a href="#匹配单词和字符边界" class="headerlink" title="匹配单词和字符边界"></a>匹配单词和字符边界</h4><p>&emsp;&emsp;有时需要确定一个模拟以待定字符开始或者以待定字符结束。可以使用特殊字符^和\$来完成，^ 字符匹配字符的开头，而 \$字符匹配字符的结尾：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/a/.test(&quot;cat&quot;);</div><div class="line">=&gt; true</div><div class="line">/^a$/.test(&quot;cat&quot;);</div><div class="line">=&gt; flase</div><div class="line">/^a$/.test(&quot;about&quot;);</div><div class="line">=&gt; false</div><div class="line">/^a/.test(&quot;about&quot;);</div><div class="line">=&gt; true</div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;第一个正则表达式匹配任何包含字符a的字符串，而第二个只能匹配字符串“a”，第三个匹配以字符a开始的字符串。需要注意，正则表达是对象，并且拥有方法。它的test方法返回布尔值，表示给定的字符串是否匹配表达式。<br>&emsp;&emsp;转义字符\b可以匹配“单词边界”———它可以是标点符号、空格、字符的开头或结尾：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">/cat/.test(&quot;concatenate&quot;);</div><div class="line">=&gt; true</div><div class="line">/\bcat\b/.test(&quot;concatenate&quot;);</div><div class="line">=&gt; false</div></pre></td></tr></table></figure></p>
+<h4 id="重复模式"><a href="#重复模式" class="headerlink" title="重复模式"></a>重复模式</h4><p>&emsp;&emsp;在正则表达式里，重复表示子模式也是可以的。在元素后面跟一个星号（*）表示可以重复匹配任意次数（包括零次）；元素后面跟一个加号（+）要求至少匹配一次；元素后面跟一个问号（?）表示该元素可选（它可能出现零次或一次）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var reg3 = /\(.*\)/;</div><div class="line">&quot;A book (that) remains shut is but a block.&quot;.search(reg3);</div><div class="line">=&gt; 7</div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;在必要的时候，可以使用花括号来指定一个元素可能发生的次数。花括号里只有一个数字（例如{4}）确定了元素必须出现的次数。花括号之间有两个数字，并且两个数字中间有逗号（{3,10}）时，表示元素至少要出现第一个数字的次数至少（这里是3次），而且最多只能出现第二个数字的次数（这里是10次）；类似地，{2, }表示要出现两次或两次以上，而{ , 4}则表示出现的次数要小于4次。<br>&emsp;&emsp;下面是一个更灵活的匹配日期的模式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var dataReg = /\d&#123;1,2&#125;\/\d\d?\/\d&#123;4&#125;/;</div><div class="line">&quot;born 15/11/2003 (mother Spot): white Fang&quot;.search(dataReg);</div><div class="line">=&gt; 5</div><div class="line">表达式/\d&#123;1,2&#125;/和/\d\d?/是同一件事情的两种表示方法：“一个或两个数字”。</div></pre></td></tr></table></figure></p>
+<h4 id="子表达式分组"><a href="#子表达式分组" class="headerlink" title="子表达式分组"></a>子表达式分组</h4><p>&emsp;&emsp;通常需要在同一个表达式里，对多个字符使用像*或+这样的特殊字符。可以使用小括号对表达式的一部分进行分组，然后用整个分组进行匹配。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var reg4 = /boo(abc+)+/i;</div><div class="line">reg4.test(&quot;booabcabcbooabc&quot;);</div><div class="line">=&gt; true</div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;模式abc+允许ab加一个或多个c字符。(abc+)+则允许该模式整体被重复一次或多次。<br>&emsp;&emsp;需要注意正则表达式结尾的i字符。在关闭斜后面，可以添加可选项。这里的表示该表达式不区分大小写，允许小写字母b匹配字符串里的大写字符B。还有个“全局”的g。</p>
+<h4 id="多选一"><a href="#多选一" class="headerlink" title="多选一"></a>多选一</h4><p>&emsp;&emsp;对于更高级的分支模式，可以使用竖线（|）表示允许模式在多个元素中选择一个。实力如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var reg5 = /\b(sacred|holy) (cow|bovine|bull|taurus)\b/i;</div><div class="line">reg5.test(&quot;Sacred bovine!&quot;);</div><div class="line">=&gt; true</div><div class="line">var reg5 = /\b(sacred|holy)(cow|bovine|bull|taurus)\b/i;</div><div class="line">reg5.test(&quot;Sacred bovine!&quot;);</div><div class="line">=&gt; false</div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;该模式将匹配任何单词，包含后面跟着cow、bovine、bull或taurus四个单词中的任何一个字符的scared或holy。这里需要使用括号，否则只会在sacred、holycow、bovine等单词之间进行选择。</p>
+<h3 id="匹配与替换"><a href="#匹配与替换" class="headerlink" title="匹配与替换"></a>匹配与替换</h3><h4 id="匹配方法"><a href="#匹配方法" class="headerlink" title="匹配方法"></a>匹配方法</h4><p>&emsp;&emsp;字符串有一个match方法，接收正则表达式作为参数。如果匹配失败就返回null；如果匹配成功则返回匹配的字符串组成的数组。通过下面的示例来了解这一实现过程：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&quot;No&quot;.match(/yes/i);</div><div class="line">=&gt; null</div><div class="line">&quot;…yes&quot;.match(/yes/i);</div><div class="line">=&gt; [&quot;yes&quot;]</div><div class="line">&quot;Giant Ape&quot;.match(/giant (\w+)/i);</div><div class="line">=&gt; [&quot;Giant Ape&quot;,&quot;Ape&quot;]</div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;返回数组的第一个元素总是匹配整个模式的字符串。第三个示例说明，模式里有括号时，括号匹配的部分将添加到该数组。通常，这使提取字符串变得非常容易。</p>
+<h4 id="正则表达式和替换方法"><a href="#正则表达式和替换方法" class="headerlink" title="正则表达式和替换方法"></a>正则表达式和替换方法</h4><p>&emsp;&emsp;字符串值的replace方法可以接收一个正则表达式作为第一个参数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&quot;Borobudur&quot;.replace(/[ou]/g,&quot;a&quot;);</div><div class="line">=&gt; Barabadar</div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;请注意，正则表达式后面的字符g代表“全局”，这意味着匹配该模式的字符的每个部分都应该被替换掉。当省略g时，只有第一个字符o被替换，这是一种常见的错误。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/07/Fullpage/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zongyi Yin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog_photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/07/Fullpage/" itemprop="url">fullpage</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-07T20:54:45+08:00">
+                2017-07-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="fullPage-js"><a href="#fullPage-js" class="headerlink" title="fullPage.js"></a>fullPage.js</h2><p>fullPage.js是一个基于jQuery的插件，它能够很方便、很轻松的制作出全屏网站，主要功能有：</p>
+<ul>
+<li>支持鼠标滚动</li>
+<li>支持前进后退和键盘控制</li>
+<li>多个回调函数</li>
+<li>支持手机、平板触摸事件</li>
+<li>支持CSS3动画</li>
+<li>支持窗口缩放</li>
+<li>窗口缩放时自动调整</li>
+<li>可设置滚动宽度、背景颜色、滚动速度、循环选项、回调、文本对齐方式等等<br>fullPage的页面结构<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;fullpage&lt;/title&gt;</div><div class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;</div><div class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.2/jquery.fullPage.css&quot;&gt;</div><div class="line">    &lt;style&gt;</div><div class="line">        .slide&#123;</div><div class="line">            text-align: center;</div><div class="line">        &#125;</div><div class="line">        #fullpageMenu&#123;</div><div class="line">            position: fixed;</div><div class="line">            top: 0;</div><div class="line">            z-index: 999;</div><div class="line">        &#125;</div><div class="line">    &lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;ul id=&quot;fullpageMenu&quot;&gt;</div><div class="line">        &lt;li data-menuanchor=&apos;page1&apos;  class=&quot;active&quot;&gt;&lt; a href=&quot;#&quot;&gt;1 section&lt;/ a&gt;&lt;/li&gt;</div><div class="line">        &lt;li data-menuanchor=&apos;page2&apos;&gt;&lt; a href=&quot;#page2&quot;&gt;2 section&lt;/ a&gt;&lt;/li&gt;</div><div class="line">        &lt;li data-menuanchor=&apos;page3&apos;&gt;&lt; a href=&quot;#page3&quot;&gt;3 section&lt;/ a&gt;&lt;/li&gt;</div><div class="line">        &lt;li data-menuanchor=&apos;page4&apos;&gt;&lt; a href=&quot;#page4&quot;&gt;4 section&lt;/ a&gt;&lt;/li&gt;</div><div class="line">    &lt;/ul&gt;</div><div class="line">    &lt;!-- &lt;div id=&quot;header&quot;&gt;header&lt;/div&gt; --&gt;</div><div class="line">    &lt;div id=&quot;fullpage&quot;&gt;</div><div class="line">        &lt;div class=&quot;section&quot;&gt;这是第一个页面&lt;/div&gt;</div><div class="line">        &lt;div class=&quot;section&quot;&gt;</div><div class="line">            &lt;div class=&quot;slide&quot;&gt;Slide1&lt;/div&gt;</div><div class="line">            &lt;div class=&quot;slide&quot;&gt;Slide2&lt;/div&gt;</div><div class="line">            &lt;div class=&quot;slide&quot;&gt;Slide3&lt;/div&gt;</div><div class="line">            &lt;div class=&quot;slide&quot;&gt;Slide4&lt;/div&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">        &lt;div class=&quot;section&quot;&gt;这是第三个页面&lt;/div&gt;</div><div class="line">        &lt;!--active类定位到当前页面--&gt;</div><div class="line">        &lt;div class=&quot;section&quot;&gt;这是第四个页面&lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">	&lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">	&lt;script type=&quot;text/javascript&quot; src=&quot;style/scrolloverflow.js&quot;&gt;&lt;/script&gt;</div><div class="line">	&lt;script type=&quot;text/javascript&quot; src=&quot;style/jquery.fullPage.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;script&gt;</div><div class="line">	    //激活fullpage效果</div><div class="line">	    $(document).ready(function()&#123;</div><div class="line">		    $(&apos;#fullpage&apos;).fullpage();</div><div class="line">		&#125;);</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div></pre></td><td class="code"><pre><div class="line">//Navigation导航</div><div class="line"></div><div class="line">/*绑定菜单，设定的相关属性与 anchors 的值对应后，菜单可以控制滚动，默认值为false*/</div><div class="line">menu: &apos;#menu&apos;,</div><div class="line"></div><div class="line">//是否锁定锚链接，默认为false，若设置为true，则定义的锚链接就没有效果，使用较少</div><div class="line">lockAnchors: false,</div><div class="line"></div><div class="line">/*定义锚链接，默认值是[]。有了锚链接，用户可以快速打开定位到某一页面。注意定义锚链接的时候，值不要和页面中任意的id或name相同，尤其在IE下，而且定义时不需要加#*/</div><div class="line">anchors: [&apos;page1&apos;, &apos;page2&apos;, &apos;page3&apos;, &apos;page4&apos;],</div><div class="line"></div><div class="line">/*是否显示导航，默认为false。如果设置为true，会显示小圆点，作为导航*/</div><div class="line">navigation: true,</div><div class="line"></div><div class="line">/*导航小圆点位置，可以设置为left或者right，默认值为right*/</div><div class="line">navigationPosition: &apos;right&apos;,</div><div class="line"></div><div class="line">/*navigationTooltips:导航小圆点的tooltips设置，默认为[],注意按照顺序设置*/</div><div class="line">navigationTooltips: [&apos;page1&apos;, &apos;page2&apos;, &apos;page3&apos;, &apos;page4&apos;],</div><div class="line"></div><div class="line">//是否显示当前页面的导航的tooltip信息，默认为false</div><div class="line">showActiveTooltip: true,</div><div class="line"></div><div class="line">//是否显示横向幻灯片的导航，默认为false</div><div class="line">slidesNavigation: true,</div><div class="line"></div><div class="line">//横向幻灯片导航的位置，默认为bottom，可以设置为top或bottom</div><div class="line">slidesNavPosition: &apos;bottom&apos;,</div><div class="line"></div><div class="line">//Scrolling</div><div class="line">//是否使用 CSS3 transforms 滚动，默认值为false</div><div class="line">css3: true,</div><div class="line"></div><div class="line">//滚动速度,默认为700  单位ms</div><div class="line">scrollingSpeed: 700,</div><div class="line"></div><div class="line">//是否使用插件的滚动方式，默认为true，变为false则会出现浏览器自带的滚动条，将不会按页滚动，而是按照滚动条的默认行为来滚动</div><div class="line">autoScrolling: true,</div><div class="line"></div><div class="line">//默认为true，决定是否将部分与视口相匹配。当设置为‘true’时，当前活动部分将始终填充整个视口。否则用户将在一个区段中随意停止。</div><div class="line">fitToSection: true,</div><div class="line"></div><div class="line">//默认为1000。如果` fittosection `设置为true，这延迟通过配置的毫秒进行拟合</div><div class="line">fitToSectionDelay: 1000,</div><div class="line"></div><div class="line">//是否包含滚动条，默认为false。设置为true，则出现浏览器自带的滚动条，页面滚动还是按页滚动，但滚动条的默认行为也有效</div><div class="line">scrollBar: false,</div><div class="line"></div><div class="line">//定义页面section滚动的动画方式，默认为easeInOutCubic,如果修改则需引入jquery.easings插件，或者jquery ui.</div><div class="line">easing: &apos;easeInOutCubic&apos;,</div><div class="line"></div><div class="line">//css3过渡效果，具体可参考http://www.w3schools.com/cssref/css3_pr_transition-timing-function.asp</div><div class="line">easingcss3: &apos;ease&apos;,</div><div class="line"></div><div class="line">//滚动到最底部后是否连续滚动回顶部，默认false</div><div class="line">loopBottom: false,</div><div class="line"></div><div class="line">//滚动到最顶部后是否连续滚动到底部，默认false</div><div class="line">loopTop: false,</div><div class="line"></div><div class="line">//横向slide幻灯片是否循环滚动，默认为true</div><div class="line">loopHorizontal: true,</div><div class="line"></div><div class="line">//是否循环滚动，默认为false。如果为true，则页面会循环滚动，它不会像loopTop和loopBottom那样出现跳动。（它和loopTop、loopBottom不兼容，不要同时设置）</div><div class="line">continuousVertical: false,</div><div class="line"></div><div class="line">//以下是fullpage.js &gt; = 2.8.3。更新的api</div><div class="line">//横向slide幻灯片是否循环滚动，默认为false，需要fullpage.js &gt; = 2.8.3。</div><div class="line">continuousHorizontal: false,</div><div class="line"></div><div class="line">//定义是否水平滑动的内滑块用鼠标滚轮或触摸板，默认为false，需要fullpage.js &gt; = 2.8.3。</div><div class="line">scrollHorizontally: false,</div><div class="line"></div><div class="line">//确定是否移动一个水平滑块将迫使滑块在其他部分在同一方向滑动。可能的值是“true”、“false”或带有交错部分的数组。需要fullpage.js &gt; = 2.8.3。参考案例http://alvarotrigo.com/fullPage/extensions/</div><div class="line">interlockedSlides: false,</div><div class="line"></div><div class="line">//启用或禁用拖动和弹段和幻灯片用鼠标或手指。需要fullpage.js &gt; = 2.8.9。</div><div class="line">dragAndMove: false,</div><div class="line"></div><div class="line">//滚动的距离是否是全屏，可以设置比例&lt;div class=&quot;section&quot; data-percentage=&quot;80&quot; data-centered=&quot;true&quot;&gt;需要fullpage.js &gt; = 2.8.8。</div><div class="line">offsetSections: false,</div><div class="line"></div><div class="line">//定义是否在离开滑块后重置每个滑块，需要fullpage.js &gt; = 2.8.3。</div><div class="line">resetSliders: false,</div><div class="line"></div><div class="line">//滑动时是否有褪色的效果，需要fullpage.js &gt; = 2.8.6。</div><div class="line">fadingEffect: false,</div><div class="line"></div><div class="line">//想在某些元素上滚动时避免自动滚动</div><div class="line">//normalScrollElements: &apos;#element1, .element2&apos;,</div><div class="line"></div><div class="line">//内容超过满屏后是否显示滚动条，默认为false</div><div class="line">scrollOverflow: false,</div><div class="line"></div><div class="line">//当设置为true时，当滚动条滚动到另一个垂直区段时，滚动条将滚动的内容滚动起来，在回到原来的区段，区段还是显示其内容的开始。参考案例http://alvarotrigo.com/fullPage/extensions/</div><div class="line">scrollOverflowReset: false,</div><div class="line"></div><div class="line">//使用scrollOverflow: true时，可以通过提供fullpage.js与iscroll.js选择你想使用自定义滚动行为。</div><div class="line">scrollOverflowOptions: null,</div><div class="line"></div><div class="line">//定义浏览器窗口宽度/高度的百分比，以及在导航到下一节/幻灯片时必须测量多远。默认为5。</div><div class="line">touchSensitivity: 5,</div><div class="line"></div><div class="line">//是否可以使用触摸板，使滚动条滚动。</div><div class="line">normalScrollElementTouchThreshold: 5,</div><div class="line"></div><div class="line">//值可能为：`top`, `bottom`, `null`.</div><div class="line">bigSectionsDestination: null,</div><div class="line"></div><div class="line">//Accessibility</div><div class="line">//是否使用键盘方向键导航</div><div class="line">keyboardScrolling: true,</div><div class="line"></div><div class="line">//锚链接是否可以控制滚动动画，默认为true。若为false，则通过锚链接定位到某个页面显示不再有动画效果。</div><div class="line">animateAnchor: true,</div><div class="line"></div><div class="line">//是否记录历史，默认true。可以记录页面滚动的历史，通过浏览器的前进后退来导航。</div><div class="line">recordHistory: true,</div><div class="line"></div><div class="line">//Design</div><div class="line">//是否使用幻灯片的控件箭头向右或向左移动。</div><div class="line">controlArrows: true,</div><div class="line"></div><div class="line">//每一页的内容是否垂直居中，默认为true</div><div class="line">verticalCentered: true,</div><div class="line"></div><div class="line">//可以为每一个section设置background-color属性</div><div class="line">sectionsColor: [&apos;yellowgreen&apos;, &apos;green&apos;, &apos;orange&apos;, &apos;red&apos;],</div><div class="line"></div><div class="line">//设置每一个section顶部和底部的padding，默认都是0。一般如果需要设置一个固定在顶部或者底部的菜单、导航、元素等，可以使用这两个配置项。</div><div class="line">//paddingTop: &apos;3em&apos;,</div><div class="line">//paddingBottom: &apos;10px&apos;,</div><div class="line"></div><div class="line">//固定的元素，默认为null。在页面滚动的时候，fixedElements设置的元素固定不动。</div><div class="line">fixedElements: &apos;#header, .footer&apos;,</div><div class="line"></div><div class="line">responsiveWidth: 0,</div><div class="line">responsiveHeight: 0,</div><div class="line"></div><div class="line">//当设置为“真”时，当响应模式被触发时，幻灯片将变成垂直部分。[Extension of fullpage.js]需要fullpage.js &gt;= 2.8.5.</div><div class="line">responsiveSlides: false,</div><div class="line"></div><div class="line">//定义是否使用视差背景对区段/幻灯片的影响。[Extension of fullpage.js]</div><div class="line">parallax: false,</div><div class="line"></div><div class="line">//使用视差背景时可以配置的参数</div><div class="line">parallaxOptions: &#123;</div><div class="line">	type: &apos;reveal&apos;,</div><div class="line">	percentage: 62,</div><div class="line">	property: &apos;translate&apos;</div><div class="line">&#125;,</div><div class="line"></div><div class="line">//Custom selectors</div><div class="line">//section的选择器，默认为.section。</div><div class="line">sectionSelector: &apos;.section&apos;,</div><div class="line"></div><div class="line">//slide的选择器，默认为.slide。</div><div class="line">slideSelector: &apos;.slide&apos;,</div><div class="line"></div><div class="line">//懒加载</div><div class="line">lazyLoading: true,</div><div class="line"></div><div class="line">//events</div><div class="line"></div><div class="line">/*1. 在我们离开一个section时，会触发一次此回调函数，接收index/nextIndex/和direction 3个参数</div><div class="line"> I.   index是离开的页面的序号，从1开始计算。</div><div class="line"> II.  nextIndex是滚动的目标页面的序号，从1开始计算</div><div class="line"> III. direction判断往上滚动还是往下滚动，值是up或down</div><div class="line">	2. 通过return false 可以取消滚动*/</div><div class="line">onLeave: function(index, nextIndex, direction) &#123;&#125;,</div><div class="line"></div><div class="line">/*1. 滚动到某一section，且滚动结束后，会触发一次此回调函数，函数接收anchorLink和index两个参数，anchorLink时锚链接的名称，index是序号，从1开始计算。</div><div class="line">	2. 我们可以根据anchorLink和index参数值的判断，触发相应的事件*/</div><div class="line">afterLoad: function(anchorLink, index) &#123;&#125;,</div><div class="line"></div><div class="line">// 页面结构生成后的回调函数，或者说是页面初始化完成后的回调函数</div><div class="line">afterRender: function() &#123;&#125;,</div><div class="line"></div><div class="line">//浏览器窗口尺寸改变后的回调函数</div><div class="line">afterResize: function() &#123;&#125;,</div><div class="line"></div><div class="line">afterResponsive: function(isResponsive) &#123;&#125;,</div><div class="line"></div><div class="line">// 滚动到某一幻灯片后的回调函数，与afterLoad类似</div><div class="line">afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex) &#123;&#125;,</div><div class="line"></div><div class="line">//在我们离开一个slide时，会触发一次此回调函数，与onLeave类似</div><div class="line">onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex) &#123;&#125;</div><div class="line"></div><div class="line">/*方法： 调用方法均为 $.fn.fullpage.xxx()</div><div class="line"></div><div class="line">1. moveSectionUp() / moveSectionDown()： 向上或向下滚动一页</div><div class="line">2. moveTo(section， slides)： 滚动到第几页， 第几个幻灯片， 注意， 页面是从1开始， 而幻灯片是从0开始。</div><div class="line">3. silentMoveTo(section, slide)： 和moveTo一样， 但是没有动画效果。</div><div class="line">4. moveSlideRight() / moveSlideLeft()： 幻灯片向右 / 左滚动</div><div class="line">5. setAutoScrolling(boolean)： 动态设置autoScrolling</div><div class="line">6. setLockAnchors： 动态设置lockAnchors</div><div class="line">7. setRecordHistory(boolean)： 动态设置recordHistory</div><div class="line">8. setScrollingSpeed(milliseconds)： 动态设置scrollingSpeed</div><div class="line">9. setAllowScrolling(bollean, [directions])： 添加或删除鼠标滚轮 / 滑动控制， 第一个参数true为启用， false</div><div class="line">为禁用， 后面的参数为方向， 取值包含all,up,down,left,right,可以使用多个， 逗号分割</div><div class="line">10. destroy(type)： 销毁fullpage特效， type可以不写， 或者使用all， 不写type， fullpage给页面添加的样式和html元素还在， 如果使用</div><div class="line">all， 则样式、 html等全部销毁， 页面恢复和不使用fullpage相同的效果</div><div class="line">11. reBeuild()： 重新更新页面和尺寸， 用于通果ajax请求后改变了页面结构之后， 重建效果。</div><div class="line"></div><div class="line">Lazy Loading </div><div class="line">&lt;img data - src = &apos;img.png&apos; &gt;</div><div class="line">&lt;video&gt;</div><div class="line">	&lt;source data - src = &apos;video.webm&apos; type = &apos;video/webm&apos; / &gt;</div><div class="line">&lt;/video &gt;*/</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/30/div-center/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zongyi Yin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog_photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/30/div-center/" itemprop="url">div水平垂直居中</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-30T20:54:45+08:00">
+                2017-06-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="总结一下我知道的css的div垂直居中的方法"><a href="#总结一下我知道的css的div垂直居中的方法" class="headerlink" title="总结一下我知道的css的div垂直居中的方法"></a>总结一下我知道的css的div垂直居中的方法</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">html:</div><div class="line">&lt;div class=&quot;parent&quot;&gt;</div><div class="line">    &lt;div class=&quot;son&quot;&gt;</div><div class="line">       垂直居中的元素</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<h2 id="固定高宽div垂直居中"><a href="#固定高宽div垂直居中" class="headerlink" title="固定高宽div垂直居中"></a>固定高宽div垂直居中</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">.son &#123;</div><div class="line">	position: absolute;</div><div class="line">	left: 50%;</div><div class="line">	top: 50%;</div><div class="line">	width: 300px;</div><div class="line">	height: 200px;</div><div class="line">	margin: -100px 0 0 -150px;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="不固定高宽div垂直居中"><a href="#不固定高宽div垂直居中" class="headerlink" title="不固定高宽div垂直居中"></a>不固定高宽div垂直居中</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">1.table布局</div><div class="line">css:</div><div class="line">.parent &#123;</div><div class="line">	display: table;</div><div class="line">	width: 100%;</div><div class="line">&#125;</div><div class="line">.son &#123;</div><div class="line">	display: table-cell;</div><div class="line">    text-align: center;</div><div class="line">    vertical-align: middle;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">2.伪元素（需要居中的元素是inline-block）</div><div class="line">css:</div><div class="line">.parent &#123;</div><div class="line">	height:</div><div class="line">  	text-align: center;</div><div class="line">&#125;</div><div class="line">.parent:before &#123;</div><div class="line"> 	content: &apos;&apos;;</div><div class="line">  	display: inline-block;</div><div class="line">  	height: 100%;</div><div class="line">  	vertical-align: middle;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.son &#123;</div><div class="line">   	display: inline-block;</div><div class="line">   	vertical-align: middle;</div><div class="line">   	width: 50%;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">3.transform</div><div class="line">.son &#123;</div><div class="line">	position: absolute;</div><div class="line">	left: 50%;</div><div class="line">	top: 50%;</div><div class="line">	transform: translate(-50%,-50%);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">4.flex</div><div class="line">.parent &#123;</div><div class="line">	display: flex;</div><div class="line">	justify-content: center;</div><div class="line">	align-items: center;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">5.利用定位，然后margin: auto</div><div class="line">.father&#123;</div><div class="line">	position: fixed;</div><div class="line">	width: 100%;</div><div class="line">	height: 100%;</div><div class="line">	top: 0;</div><div class="line">	left: 0;</div><div class="line">&#125;</div><div class="line">.son &#123;</div><div class="line">	position: absolute;</div><div class="line">	top:0;</div><div class="line">	left:0;</div><div class="line">	bottom:0;</div><div class="line">	right:0;</div><div class="line">	width:50%;</div><div class="line">	height:50%;</div><div class="line">	margin:auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -638,7 +1510,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
