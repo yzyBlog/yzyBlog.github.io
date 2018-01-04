@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、animation.css官网https://daneden.github.io/animate.css/ 简介animate.css是一个来自国外的CSS3动画库，它预设了抖动（shake）、闪烁（flash）、弹跳（bounce）、翻转（flip）、旋转（rotateIn/rotateOut）、淡入淡出（fadeIn/fadeOut）等多达60多种动画效果，几乎包含了所有常见的动画效果。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动画相关实现">
+<meta property="og:url" content="http://yoursite.com/2018/01/04/animation/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="一、animation.css官网https://daneden.github.io/animate.css/ 简介animate.css是一个来自国外的CSS3动画库，它预设了抖动（shake）、闪烁（flash）、弹跳（bounce）、翻转（flip）、旋转（rotateIn/rotateOut）、淡入淡出（fadeIn/fadeOut）等多达60多种动画效果，几乎包含了所有常见的动画效果。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-04T08:17:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="动画相关实现">
+<meta name="twitter:description" content="一、animation.css官网https://daneden.github.io/animate.css/ 简介animate.css是一个来自国外的CSS3动画库，它预设了抖动（shake）、闪烁（flash）、弹跳（bounce）、翻转（flip）、旋转（rotateIn/rotateOut）、淡入淡出（fadeIn/fadeOut）等多达60多种动画效果，几乎包含了所有常见的动画效果。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/04/animation/"/>
+
+
+
+
+
+  <title>动画相关实现 | 我的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">我的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">一天进步一点</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/04/animation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zongyi Yin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog_photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">动画相关实现</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-04T16:48:55+08:00">
+                2018-01-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="一、animation-css"><a href="#一、animation-css" class="headerlink" title="一、animation.css"></a>一、animation.css</h2><h4 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h4><p><a href="https://daneden.github.io/animate.css/" target="_blank" rel="external">https://daneden.github.io/animate.css/</a></p>
+<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>animate.css是一个来自国外的CSS3动画库，它预设了抖动（shake）、闪烁（flash）、弹跳（bounce）、翻转（flip）、旋转（rotateIn/rotateOut）、淡入淡出（fadeIn/fadeOut）等多达60多种动画效果，几乎包含了所有常见的动画效果。</p>
+<h4 id="兼容"><a href="#兼容" class="headerlink" title="兼容"></a>兼容</h4><p>浏览器兼容：当然是只兼容支持CSS3   animate属性的浏览器，他们分别是：IE10+、Firefox、Chrome、Opera、Safari。</p>
+<h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><p>1、引入css<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;head&gt;</div><div class="line">  &lt;link rel=&quot;stylesheet&quot;</div><div class="line">  href=&quot;https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css&quot;&gt;</div><div class="line">&lt;/head&gt;</div></pre></td></tr></table></figure></p>
+<p>2、html<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;h1 class=&quot;animated infinite bounce&quot; id=&quot;dowebok&quot;&gt;Example&lt;/h1&gt;</div></pre></td></tr></table></figure></p>
+<p>给元素加上 class 后，刷新页面，就能看到动画效果了。animated 类似于全局变量，它定义了动画的持续时间；bounce 是动画具体的动画效果的名称，你可以选择任意的效果。<br>如果动画是无限播放的，可以添加 class infinite。<br>你也可以通过 JavaScript或jQuery给元素添加这些class，比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(function()&#123;</div><div class="line">    $(&apos;#dowebok&apos;).addClass(&apos;animated bounce&apos;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>当动画效果执行完成后还可以通过以下代码添加事件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&apos;#yourElement&apos;).one(&apos;webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend&apos;, doSomething);</div></pre></td></tr></table></figure></p>
+<p>有些动画效果最后会让元素不可见，比如淡出、向左滑动等等，可能你又需要将 class 删除，比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$(function()&#123;</div><div class="line">    $(&apos;#dowebok&apos;).addClass(&apos;animated bounce&apos;);</div><div class="line">    setTimeout(function()&#123;</div><div class="line">        $(&apos;#dowebok&apos;).removeClass(&apos;bounce&apos;);</div><div class="line">    &#125;, 1000);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>animate.css 的默认设置也许有些时候并不是我们想要的，所以你可以重新设置，比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#dowebok &#123;</div><div class="line">    animate-duration: 2s;    //动画持续时间</div><div class="line">    animate-delay: 1s;    //动画延迟时间</div><div class="line">    animate-iteration-count: 2;    //动画执行次数</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意添加浏览器前缀。</p>
+<hr>
+<h2 id="二、velocity-js"><a href="#二、velocity-js" class="headerlink" title="二、velocity.js"></a>二、velocity.js</h2><h4 id="英文官网："><a href="#英文官网：" class="headerlink" title="英文官网："></a>英文官网：</h4><p><a href="http://velocityjs.org/" target="_blank" rel="external">http://velocityjs.org/</a></p>
+<h4 id="中文文档："><a href="#中文文档：" class="headerlink" title="中文文档："></a>中文文档：</h4><p><a href="http://www.mrfront.com/docs/velocity.js/index.html" target="_blank" rel="external">http://www.mrfront.com/docs/velocity.js/index.html</a></p>
+<h4 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h4><p>Velocity 是一个简单易用、高性能、功能丰富的轻量级JS动画库。它能和 jQuery 完美协作，并和$.animate()有相同的 API， 但它不依赖 jQuery，可单独使用。 Velocity 不仅包含了 $.animate() 的全部功能， 还拥有：颜色动画、转换动画(transforms)、循环、 缓动、SVG 动画、和 滚动动画 等特色功能。</p>
+<p>它比 $.animate() 更快更流畅，性能甚至高于 CSS3 animation， 是 jQuery 和 CSS3 transition 的最佳组合，它支持所有现代浏览器，最低可兼容到 IE8 和 Android 2.3。</p>
+<h4 id="使用方法-1"><a href="#使用方法-1" class="headerlink" title="使用方法"></a>使用方法</h4><p>1、引入js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;body&gt;</div><div class="line">    &lt;!-- dom --&gt;</div><div class="line">    &lt;div class=&quot;element&quot;&gt;&lt;/div&gt;</div><div class="line"></div><div class="line">    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div></pre></td></tr></table></figure></p>
+<p>2、使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">// 标准写法</div><div class="line">// (为了简洁，后面的示例代码中 将直接使用 $element 来代替 jQuery 选择器)</div><div class="line">$(&quot;.element&quot;).velocity(&#123;</div><div class="line">    left: &quot;200px&quot;</div><div class="line">&#125;, &#123;</div><div class="line">    duration: 450,</div><div class="line">    delay: 1000</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// $.animate() 的写法，效果同上</div><div class="line">$(&quot;.element&quot;).delay(1000).velocity(&#123;left: &quot;200px&quot;&#125;, 450);</div></pre></td></tr></table></figure></p>
+<h4 id="velocity-js基础用法"><a href="#velocity-js基础用法" class="headerlink" title="velocity.js基础用法"></a>velocity.js基础用法</h4><p>Velocity.js 可以在不引入 jQuery 的情况下单独使用。如果 你需要大部分动画效果能兼容 IE8，就必须引入 jQuery 1×。 它也可以和 Zepto 一起使用，写法和 jQuery 一样：<br>注意：使用 jQuery 时，必须在 Velocity 之前加载 jQuery<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">// 无 jQuery 或 Zepto 时，Velocity()方法挂载在 window 对象上 (window.velocity)</div><div class="line">// ( 第一个参数为原生js的dom选择器 )</div><div class="line">Velocity(document.getElementById(&quot;dummy&quot;), &#123;</div><div class="line">    opacity: 0.5</div><div class="line">&#125;, &#123;</div><div class="line">    duration: 1000</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// 使用 jQuery 或 Zepto 时</div><div class="line">$(&quot;#dummy&quot;).velocity(&#123;</div><div class="line">    opacity: 0.5</div><div class="line">&#125;, &#123;</div><div class="line">    duration: 1000</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h4 id="velocity-js参数"><a href="#velocity-js参数" class="headerlink" title="velocity.js参数"></a>velocity.js参数</h4><h5 id="参数概述和基础写法："><a href="#参数概述和基础写法：" class="headerlink" title="参数概述和基础写法："></a>参数概述和基础写法：</h5><p>Velocity 接收一组 css 属性键值对 (css map) 作为它的第一个参数，该参数作为动画效果的最终属性。第二个参数是可选参数 为动画的额外配置项。下面为参数的写法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">$element.velocity(&#123;</div><div class="line">    width: &quot;500px&quot;,        // 动画属性 宽度到 &quot;500px&quot; 的动画</div><div class="line">    property2: value2      // 属性示例</div><div class="line">&#125;, &#123;</div><div class="line">    /* Velocity 动画配置项的默认值 */</div><div class="line">    duration: 400,         // 动画执行时间</div><div class="line">    easing: &quot;swing&quot;,       // 缓动效果</div><div class="line">    queue: &quot;&quot;,             // 队列</div><div class="line">    begin: undefined,      // 动画开始时的回调函数</div><div class="line">    progress: undefined,   // 动画执行中的回调函数（该函数会随着动画执行被不断触发）</div><div class="line">    complete: undefined,   // 动画结束时的回调函数</div><div class="line">    display: undefined,    // 动画结束时设置元素的 css display 属性</div><div class="line">    visibility: undefined, // 动画结束时设置元素的 css visibility 属性</div><div class="line">    loop: false,           // 循环</div><div class="line">    delay: false,          // 延迟</div><div class="line">    mobileHA: true         // 移动端硬件加速（默认开启）</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h5 id="单一对象的参数写法："><a href="#单一对象的参数写法：" class="headerlink" title="单一对象的参数写法："></a>单一对象的参数写法：</h5><p>Velocity 也支持 single-argument 的语法，看下面示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$element.velocity(&#123;</div><div class="line">    properties: &#123; opacity: 1 &#125;,</div><div class="line">    options: &#123; duration: 500 &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// 或者：</div><div class="line">$element.velocity(&#123;</div><div class="line">    p: &#123; opacity: 1 &#125;, // 可以将 properties 简写成 p</div><div class="line">    o: &#123; duration: 500 &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h5 id="逗号分割的参数写法（类似-animate）："><a href="#逗号分割的参数写法（类似-animate）：" class="headerlink" title="逗号分割的参数写法（类似 $.animate）："></a>逗号分割的参数写法（类似 $.animate）：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$element.velocity(&#123; top: 50 &#125;, 1000);</div><div class="line">$element.velocity(&#123; top: 50 &#125;, 1000, &quot;swing&quot;);</div><div class="line">$element.velocity(&#123; top: 50 &#125;, &quot;swing&quot;);</div><div class="line">$element.velocity(&#123; top: 50 &#125;, 1000, function() &#123; alert(&quot;Hi&quot;); &#125;);</div></pre></td></tr></table></figure>
+<h4 id="Properties-Map-动画属性"><a href="#Properties-Map-动画属性" class="headerlink" title="Properties Map 动画属性"></a>Properties Map 动画属性</h4><p>如果不写属性值的单位, Velocity 会将像素(px)作为默认单位<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">// 等同 padding: 1px</div><div class="line">$element.velocity(&#123; padding: 1 &#125;);</div><div class="line"></div><div class="line">// 等同 padding-left: 1px, padding-right: 1px</div><div class="line">$element.velocity(&#123;</div><div class="line">    paddingLeft: 1,</div><div class="line">    paddingRight: 1</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// 但你不能这样写！因为这样相当于为 padding 赋了多个值</div><div class="line">$element.velocity(&#123; padding: &quot;1 1 1 1&quot; &#125;); // error</div></pre></td></tr></table></figure></p>
+<p>Velocity 在 1.2.0+ 版本里增加了对 “px, em, rem, %, deg, vw/vh” 这些单位的支持， 如果不填写属性单位 默认单位还是”px”，但 “deg” 用于 rotateZ 属性时可以省略不写。 Velocity 还支持动态计算属性值，包括 “+, -, *, /“，还可以设置元素在动画执行前的初始值，看下面示例：<br>( 注意：”rem” 只支持 IE9+，”vh/vw” 只支持 IE9+ 和 Android 4.4+ )<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$element.velocity(&#123;</div><div class="line">    top: 50,                // 等同于 &quot;50px&quot;</div><div class="line">    left: &quot;50%&quot;,</div><div class="line">    width: &quot;+=5rem&quot;,        // 每次在当前值上叠加 5rem</div><div class="line">    height: &quot;*=2&quot;           // 每次在当前值上叠乘 2</div><div class="line">    color: [&quot;#888&quot;, &quot;#000&quot;] // 每次动画执行前，color 的初始值都为&quot;#000&quot;（从&quot;#000&quot;过渡成&quot;#888&quot;）</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h4 id="Chaining-链式动画"><a href="#Chaining-链式动画" class="headerlink" title="Chaining 链式动画"></a>Chaining 链式动画</h4><p>当一个元素连续应用多个velocity()时，动画将以队列的方式执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$element</div><div class="line">    /* 先执行宽度变为75px的动画 */</div><div class="line">    .velocity(&#123; width: 75 &#125;)</div><div class="line">    /* 等前面的宽度动画结束后，再执行高度变为0的动画 */</div><div class="line">    .velocity(&#123; height: 0 &#125;);</div></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="三、根据ui给的帧图实现动画"><a href="#三、根据ui给的帧图实现动画" class="headerlink" title="三、根据ui给的帧图实现动画"></a>三、根据ui给的帧图实现动画</h2><h4 id="1-steps"><a href="#1-steps" class="headerlink" title="1.steps"></a>1.steps</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">&lt;!doctype html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta charset=&quot;utf-8&quot;&gt;</div><div class="line">&lt;title&gt;steps&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;style type=&quot;text/css&quot;&gt;</div><div class="line">    body&#123;</div><div class="line">        background: black;</div><div class="line">    &#125;</div><div class="line">    #sprite&#123;</div><div class="line">        width: 286px;</div><div class="line">        height: 407px;</div><div class="line">        margin: 40px auto 0;</div><div class="line">        background: url(http://pic01.babytreeimg.com/foto3/common_photo/original/2018/0103/58eeb92e97111159.png) no-repeat;</div><div class="line">        -webkit-animation: m4 2s infinite steps(50,end);</div><div class="line">        animation: m4 2s infinite steps(50,end);</div><div class="line">    &#125;</div><div class="line">    @-webkit-keyframes m4&#123;</div><div class="line">        from&#123;background-position: 0;&#125;</div><div class="line">        to &#123;background-position: -14300px;&#125;</div><div class="line">    &#125;</div><div class="line">&lt;/style&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id=&quot;sprite&quot;&gt;</div><div class="line">        </div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h4 id="2-keyframes"><a href="#2-keyframes" class="headerlink" title="2.keyframes"></a>2.keyframes</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div></pre></td><td class="code"><pre><div class="line">&lt;!doctype html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta charset=&quot;utf-8&quot;&gt;</div><div class="line">&lt;title&gt;steps&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;style type=&quot;text/css&quot;&gt;</div><div class="line">    #sprite&#123;</div><div class="line">        width: 260px;</div><div class="line">		    height: 470px;</div><div class="line">        margin: 40px auto 0;</div><div class="line">        background: url(http://pic01.babytreeimg.com/foto3/common_photo/original/2018/0103/a758ccfc97118028.png) no-repeat;</div><div class="line">        animation: pop 1s step-end infinite;</div><div class="line">    	-webkit-animation: pop 1s step-end infinite;</div><div class="line">    &#125;</div><div class="line">    @keyframes pop &#123;</div><div class="line">	    0%,</div><div class="line">	    6.8% &#123;</div><div class="line">	        background-position: -5px -5px; </div><div class="line">	    &#125;</div><div class="line">	    7.8%,</div><div class="line">	    14.6% &#123;</div><div class="line">	        background-position: -275px -5px; </div><div class="line">	    &#125;</div><div class="line">	   </div><div class="line">	    15.6%,</div><div class="line">	    22.4% &#123;</div><div class="line">	        background-position: -545px -5px; </div><div class="line">	    &#125;</div><div class="line">	    23.4%,</div><div class="line">	    30.2% &#123;</div><div class="line">	        background-position: -815px -5px;</div><div class="line">	    &#125;</div><div class="line">	    31.2%,</div><div class="line">	    38% &#123;</div><div class="line">	        background-position: -5px -485px; </div><div class="line">	    &#125;</div><div class="line">	    39%,</div><div class="line">	    45.8% &#123;</div><div class="line">	        background-position: -275px -485px;</div><div class="line">	    &#125;</div><div class="line">	    46.8%,</div><div class="line">	    53.6% &#123;</div><div class="line">	        background-position: -545px -485px; </div><div class="line">	    &#125;</div><div class="line">	    54.6%,</div><div class="line">	    61.4% &#123;</div><div class="line">	    	background-position: -815px -485px; </div><div class="line">	    &#125;</div><div class="line">	    62.4%,</div><div class="line">	    69.2% &#123;</div><div class="line">	        background-position: -1085px -485px; </div><div class="line">	    &#125;</div><div class="line">	    70.2%,</div><div class="line">	    77% &#123;</div><div class="line">	        background-position: -5px -965px;  </div><div class="line">	    &#125;</div><div class="line">	    78%,</div><div class="line">	    84.8% &#123;</div><div class="line">	        background-position: -275px -965px; </div><div class="line">	    &#125;</div><div class="line">	    85.8%,</div><div class="line">	    92.6% &#123;</div><div class="line">	        background-position: -545px -965px; </div><div class="line">	    &#125;</div><div class="line">	    93.6%,</div><div class="line">	    100% &#123;</div><div class="line">	    	background-position: -5px -965px;  </div><div class="line">	    &#125;</div><div class="line">	&#125;</div><div class="line">	@-webkit-keyframes pop &#123;</div><div class="line">	    0%,</div><div class="line">	    6.8% &#123;</div><div class="line">	        background-position: -5px -5px; </div><div class="line">	    &#125;</div><div class="line">	    7.8%,</div><div class="line">	    14.6% &#123;</div><div class="line">	        background-position: -275px -5px; </div><div class="line">	    &#125;</div><div class="line">	   </div><div class="line">	    15.6%,</div><div class="line">	    22.4% &#123;</div><div class="line">	        background-position: -545px -5px; </div><div class="line">	    &#125;</div><div class="line">	    23.4%,</div><div class="line">	    30.2% &#123;</div><div class="line">	        background-position: -815px -5px;</div><div class="line">	    &#125;</div><div class="line">	    31.2%,</div><div class="line">	    38% &#123;</div><div class="line">	        background-position: -5px -485px; </div><div class="line">	    &#125;</div><div class="line">	    39%,</div><div class="line">	    45.8% &#123;</div><div class="line">	        background-position: -275px -485px;</div><div class="line">	    &#125;</div><div class="line">	    46.8%,</div><div class="line">	    53.6% &#123;</div><div class="line">	        background-position: -545px -485px; </div><div class="line">	    &#125;</div><div class="line">	    54.6%,</div><div class="line">	    61.4% &#123;</div><div class="line">	    	background-position: -815px -485px; </div><div class="line">	    &#125;</div><div class="line">	    62.4%,</div><div class="line">	    69.2% &#123;</div><div class="line">	        background-position: -1085px -485px; </div><div class="line">	    &#125;</div><div class="line">	    70.2%,</div><div class="line">	    77% &#123;</div><div class="line">	        background-position: -5px -965px;  </div><div class="line">	    &#125;</div><div class="line">	    78%,</div><div class="line">	    84.8% &#123;</div><div class="line">	        background-position: -275px -965px; </div><div class="line">	    &#125;</div><div class="line">	    85.8%,</div><div class="line">	    92.6% &#123;</div><div class="line">	        background-position: -545px -965px; </div><div class="line">	    &#125;</div><div class="line">	    93.6%,</div><div class="line">	    100% &#123;</div><div class="line">	    	background-position: -5px -965px;  </div><div class="line">	    &#125;</div><div class="line">	&#125;</div><div class="line">&lt;/style&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id=&quot;sprite&quot;&gt;</div><div class="line">        </div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h4 id="3-JS"><a href="#3-JS" class="headerlink" title="3.JS"></a>3.JS</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">	&lt;title&gt;js&lt;/title&gt;</div><div class="line">	&lt;style type=&quot;text/css&quot;&gt;</div><div class="line">	#sprite&#123;</div><div class="line">		width: 130px;</div><div class="line">		height: 235px;</div><div class="line">	&#125;</div><div class="line">&lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	&lt;div id=&quot;sprite&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">function animation(ele, positions, imgUrl)&#123;</div><div class="line">	ele.style.backgroundImage = &quot;url(&quot; + imgUrl +&quot;)&quot;;</div><div class="line">	ele.style.backgroundSize = &quot;675px 720px&quot;;</div><div class="line">	ele.style.backgroundRepeat = &quot;no-repeat&quot;;</div><div class="line">	</div><div class="line">	var index = 0;</div><div class="line">	</div><div class="line">	function run()&#123;</div><div class="line">		var position = positions[index].split(&quot; &quot;);</div><div class="line">		ele.style.backgroundPosition = position[0] + &quot;px &quot; + position[1] + &quot;px&quot;;</div><div class="line">		index++;</div><div class="line">		if(index &gt;= positions.length) &#123;</div><div class="line">			index = 0;</div><div class="line">		&#125;</div><div class="line">		setTimeout(run, 80);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	run();</div><div class="line">&#125;</div><div class="line"></div><div class="line">var imgUrl = &quot;http://pic01.babytreeimg.com/foto3/common_photo/original/2018/0103/a758ccfc97118028.png&quot;;</div><div class="line">var positions = [&quot;-2.5 -2.5&quot;,&quot;-137.5 -2.5&quot;,&quot;-272.5 -2.5&quot;,&quot;-407.5 -2.5&quot;,&quot;-2.5 -242.5&quot;,&quot;-137.5 -242.5&quot;,&quot;-272.5 -242.5&quot;,&quot;-407.5 -242.5&quot;,&quot;-542.5 -242.5&quot;,</div><div class="line">&quot;-2.5 -482.5&quot;,&quot;-137.5 -482.5&quot;,&quot;-272.5 -482.5&quot;];</div><div class="line">var ele = document.getElementById(&quot;sprite&quot;);</div><div class="line">animation(ele, positions, imgUrl);</div><div class="line"></div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h4 id="4-jquery-animateSprite-js"><a href="#4-jquery-animateSprite-js" class="headerlink" title="4.jquery.animateSprite.js"></a>4.jquery.animateSprite.js</h4><h5 id="github地址："><a href="#github地址：" class="headerlink" title="github地址："></a>github地址：</h5><p><a href="https://github.com/blaiprat/jquery.animateSprite" target="_blank" rel="external">https://github.com/blaiprat/jquery.animateSprite</a></p>
+<h5 id="使用方法-2"><a href="#使用方法-2" class="headerlink" title="使用方法"></a>使用方法</h5><p>使用该插件需要引入jQuery和jquery.animateSprite.js文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;script src=&quot;js/jquery.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;js/jquery.animateSprite.js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<h5 id="HTML结构"><a href="#HTML结构" class="headerlink" title="HTML结构"></a>HTML结构</h5><p>可以使用一个<div>元素来作为雪碧图的容器。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;animation animation-2&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure></div></p>
+<h5 id="CSS样式"><a href="#CSS样式" class="headerlink" title="CSS样式"></a>CSS样式</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">.animation-2 &#123;</div><div class="line">    background: url(../img/ramonaflowers_multiple.png);</div><div class="line">    width: 125px;</div><div class="line">    height: 157px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="初始化插件"><a href="#初始化插件" class="headerlink" title="初始化插件"></a>初始化插件</h5><p>在页面DOM元素加载完毕之后，可以通过下面的方法来初始化该jQuery插件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$(&apos;.animation&apos;).animateSprite(&#123;</div><div class="line">    fps: 12,</div><div class="line">    loop: true,</div><div class="line">    animations: &#123;</div><div class="line">        walk: [0, 1, 2, 3, 4, 5, 6, 7, 8],</div><div class="line">        run: [14, 13, 12, 11, 10, 9]</div><div class="line">    &#125;,</div><div class="line">    complete: function()&#123;</div><div class="line">        alert(&apos;Sprite animation complete!&apos;);</div><div class="line">    &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h5 id="配置参数"><a href="#配置参数" class="headerlink" title="配置参数"></a>配置参数</h5><ul>
+<li>columns：雪碧图分为多少列，默认为10。</li>
+<li>fps：定义动画的速度。</li>
+<li>duration：动画的持续时间，单位毫秒。</li>
+<li>complete：动画执行完毕之后的回调函数。（如果是无限循环动画不会被调用）</li>
+<li>loop：是否是无限循环动画</li>
+<li>autoplay：是否自动播放。</li>
+<li>animations：包含多个动画的键值对对象。键是动画的名称，值是一个包含帧的数组。<h5 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h5></li>
+<li><p>play：播放指定的动画。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&apos;object&apos;).animateSprite(&apos;play&apos;, &apos;animation name&apos;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>stop：停止播放指定的动画。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&apos;object&apos;).animateSprite(&apos;stop&apos;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>resume：恢复动画的播放。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&apos;object&apos;).animateSprite(&apos;resume&apos;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>restart：重新开始播放动画。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&apos;object&apos;).animateSprite(&apos;restart&apos;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>frame：播放第n帧动画。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&apos;object&apos;).animateSprite(&apos;frame&apos;, n)</div></pre></td></tr></table></figure>
+</li>
+<li><p>fps：将动画的速度调整为n帧每秒。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&apos;object&apos;).animateSprite(&apos;fps&apos;, n)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h2><p><a href="http://www.htmleaf.com/Demo/201604033295.html" target="_blank" rel="external">http://www.htmleaf.com/Demo/201604033295.html</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/27/lazyload/" rel="next" title="图片懒加载">
+                <i class="fa fa-chevron-left"></i> 图片懒加载
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/blog_photo.jpg"
+                alt="zongyi Yin" />
+            
+              <p class="site-author-name" itemprop="name">zongyi Yin</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、animation-css"><span class="nav-number">1.</span> <span class="nav-text">一、animation.css</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#官网"><span class="nav-number">1.0.1.</span> <span class="nav-text">官网</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简介"><span class="nav-number">1.0.2.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#兼容"><span class="nav-number">1.0.3.</span> <span class="nav-text">兼容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用方法"><span class="nav-number">1.0.4.</span> <span class="nav-text">使用方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、velocity-js"><span class="nav-number">2.</span> <span class="nav-text">二、velocity.js</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#英文官网："><span class="nav-number">2.0.1.</span> <span class="nav-text">英文官网：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#中文文档："><span class="nav-number">2.0.2.</span> <span class="nav-text">中文文档：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简介-1"><span class="nav-number">2.0.3.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用方法-1"><span class="nav-number">2.0.4.</span> <span class="nav-text">使用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#velocity-js基础用法"><span class="nav-number">2.0.5.</span> <span class="nav-text">velocity.js基础用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#velocity-js参数"><span class="nav-number">2.0.6.</span> <span class="nav-text">velocity.js参数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#参数概述和基础写法："><span class="nav-number">2.0.6.1.</span> <span class="nav-text">参数概述和基础写法：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#单一对象的参数写法："><span class="nav-number">2.0.6.2.</span> <span class="nav-text">单一对象的参数写法：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#逗号分割的参数写法（类似-animate）："><span class="nav-number">2.0.6.3.</span> <span class="nav-text">逗号分割的参数写法（类似 $.animate）：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Properties-Map-动画属性"><span class="nav-number">2.0.7.</span> <span class="nav-text">Properties Map 动画属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Chaining-链式动画"><span class="nav-number">2.0.8.</span> <span class="nav-text">Chaining 链式动画</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、根据ui给的帧图实现动画"><span class="nav-number">3.</span> <span class="nav-text">三、根据ui给的帧图实现动画</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-steps"><span class="nav-number">3.0.1.</span> <span class="nav-text">1.steps</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-keyframes"><span class="nav-number">3.0.2.</span> <span class="nav-text">2.keyframes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-JS"><span class="nav-number">3.0.3.</span> <span class="nav-text">3.JS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-jquery-animateSprite-js"><span class="nav-number">3.0.4.</span> <span class="nav-text">4.jquery.animateSprite.js</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#github地址："><span class="nav-number">3.0.4.1.</span> <span class="nav-text">github地址：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用方法-2"><span class="nav-number">3.0.4.2.</span> <span class="nav-text">使用方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HTML结构"><span class="nav-number">3.0.4.3.</span> <span class="nav-text">HTML结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CSS样式"><span class="nav-number">3.0.4.4.</span> <span class="nav-text">CSS样式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#初始化插件"><span class="nav-number">3.0.4.5.</span> <span class="nav-text">初始化插件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#配置参数"><span class="nav-number">3.0.4.6.</span> <span class="nav-text">配置参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#方法"><span class="nav-number">3.0.4.7.</span> <span class="nav-text">方法</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#demo"><span class="nav-number">4.</span> <span class="nav-text">demo</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=2007634478&auto=1&height=430"></iframe>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zongyi Yin</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
