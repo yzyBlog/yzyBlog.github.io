@@ -229,6 +229,133 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/05/localStorage-sessionStorage/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zongyi Yin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog_photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/05/localStorage-sessionStorage/" itemprop="url">HTML 5 Web 存储</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-05T16:01:32+08:00">
+                2018-01-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在客户端存储数据<br>HTML 5 提供了两种在客户端存储数据的新方法:<br>localStorage - 没有时间限制的数据存储<br>sessionStorage - 针对一个 session 的数据存储<br>之前，这些都是由 cookie 完成的。但是 cookie 不适合大量数据的存储，因为它们由每个对服务器的请求来 传递，这使得 cookie 速度很慢而且效率也不高。<br>在 HTML 5 中，数据不是由每个服务器请求传递的，而是只有在请求时使用数据。它使在不影响网站性能的 情况下存储大量数据成为可能。<br>对于不同的网站，数据存储于不同的区域，并且一个网站只能访问其自身的数据。<br>HTML 5 使用 JavaScript 来存储和访问数据。</p>
+<ul>
+<li><p>localStorage 方法<br>localStorage 方法存储的数据没有时间限制。第二天、第二周或下一年之后，数据依然可用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE HTML&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;script type=&quot;text/javascript&quot;&gt; </div><div class="line">	if (localStorage.pagecount) &#123;</div><div class="line">		localStorage.pagecount=Number(localStorage.pagecount) +1; &#125;</div><div class="line">	else &#123;</div><div class="line">		localStorage.pagecount=1;</div><div class="line">	&#125;</div><div class="line">	document.write(&quot;Visits: &quot; + localStorage.pagecount + &quot; time(s).&quot;); </div><div class="line">&lt;/script&gt;</div><div class="line">&lt;p&gt;刷新页面会看到计数器在增长。&lt;/p&gt;</div><div class="line">&lt;p&gt;请关闭浏览器窗口，然后再试一次，计数器会继续计数。&lt;/p&gt; &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>sessionStorage 方法<br>sessionStorage 方法针对一个 session 进行数据存储。当用户关闭浏览器窗口后，数据会被删除。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE HTML&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;script type=&quot;text/javascript&quot;&gt; </div><div class="line">	if (sessionStorage.pagecount) &#123;</div><div class="line">		sessionStorage.pagecount=Number(sessionStorage.pagecount) +1; &#125;</div><div class="line">	else &#123;</div><div class="line">		sessionStorage.pagecount=1;</div><div class="line">	&#125;</div><div class="line">	document.write(&quot;Visits: &quot; + sessionStorage.pagecount + &quot; time(s).&quot;); </div><div class="line">&lt;/script&gt;</div><div class="line">&lt;p&gt;刷新页面会看到计数器在增长。&lt;/p&gt;</div><div class="line">&lt;p&gt;请关闭浏览器窗口，然后再试一次，计数器已经重置了。&lt;/p&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/04/animation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1511,137 +1638,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/07/Fullpage/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zongyi Yin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog_photo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="我的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/07/Fullpage/" itemprop="url">fullpage</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-07T20:54:45+08:00">
-                2017-07-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="fullPage-js"><a href="#fullPage-js" class="headerlink" title="fullPage.js"></a>fullPage.js</h2><p>fullPage.js是一个基于jQuery的插件，它能够很方便、很轻松的制作出全屏网站，主要功能有：</p>
-<ul>
-<li>支持鼠标滚动</li>
-<li>支持前进后退和键盘控制</li>
-<li>多个回调函数</li>
-<li>支持手机、平板触摸事件</li>
-<li>支持CSS3动画</li>
-<li>支持窗口缩放</li>
-<li>窗口缩放时自动调整</li>
-<li>可设置滚动宽度、背景颜色、滚动速度、循环选项、回调、文本对齐方式等等<br>fullPage的页面结构<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;fullpage&lt;/title&gt;</div><div class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;</div><div class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.2/jquery.fullPage.css&quot;&gt;</div><div class="line">    &lt;style&gt;</div><div class="line">        .slide&#123;</div><div class="line">            text-align: center;</div><div class="line">        &#125;</div><div class="line">        #fullpageMenu&#123;</div><div class="line">            position: fixed;</div><div class="line">            top: 0;</div><div class="line">            z-index: 999;</div><div class="line">        &#125;</div><div class="line">    &lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;ul id=&quot;fullpageMenu&quot;&gt;</div><div class="line">        &lt;li data-menuanchor=&apos;page1&apos;  class=&quot;active&quot;&gt;&lt; a href=&quot;#&quot;&gt;1 section&lt;/ a&gt;&lt;/li&gt;</div><div class="line">        &lt;li data-menuanchor=&apos;page2&apos;&gt;&lt; a href=&quot;#page2&quot;&gt;2 section&lt;/ a&gt;&lt;/li&gt;</div><div class="line">        &lt;li data-menuanchor=&apos;page3&apos;&gt;&lt; a href=&quot;#page3&quot;&gt;3 section&lt;/ a&gt;&lt;/li&gt;</div><div class="line">        &lt;li data-menuanchor=&apos;page4&apos;&gt;&lt; a href=&quot;#page4&quot;&gt;4 section&lt;/ a&gt;&lt;/li&gt;</div><div class="line">    &lt;/ul&gt;</div><div class="line">    &lt;!-- &lt;div id=&quot;header&quot;&gt;header&lt;/div&gt; --&gt;</div><div class="line">    &lt;div id=&quot;fullpage&quot;&gt;</div><div class="line">        &lt;div class=&quot;section&quot;&gt;这是第一个页面&lt;/div&gt;</div><div class="line">        &lt;div class=&quot;section&quot;&gt;</div><div class="line">            &lt;div class=&quot;slide&quot;&gt;Slide1&lt;/div&gt;</div><div class="line">            &lt;div class=&quot;slide&quot;&gt;Slide2&lt;/div&gt;</div><div class="line">            &lt;div class=&quot;slide&quot;&gt;Slide3&lt;/div&gt;</div><div class="line">            &lt;div class=&quot;slide&quot;&gt;Slide4&lt;/div&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">        &lt;div class=&quot;section&quot;&gt;这是第三个页面&lt;/div&gt;</div><div class="line">        &lt;!--active类定位到当前页面--&gt;</div><div class="line">        &lt;div class=&quot;section&quot;&gt;这是第四个页面&lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">	&lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">	&lt;script type=&quot;text/javascript&quot; src=&quot;style/scrolloverflow.js&quot;&gt;&lt;/script&gt;</div><div class="line">	&lt;script type=&quot;text/javascript&quot; src=&quot;style/jquery.fullPage.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;script&gt;</div><div class="line">	    //激活fullpage效果</div><div class="line">	    $(document).ready(function()&#123;</div><div class="line">		    $(&apos;#fullpage&apos;).fullpage();</div><div class="line">		&#125;);</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div></pre></td><td class="code"><pre><div class="line">//Navigation导航</div><div class="line"></div><div class="line">/*绑定菜单，设定的相关属性与 anchors 的值对应后，菜单可以控制滚动，默认值为false*/</div><div class="line">menu: &apos;#menu&apos;,</div><div class="line"></div><div class="line">//是否锁定锚链接，默认为false，若设置为true，则定义的锚链接就没有效果，使用较少</div><div class="line">lockAnchors: false,</div><div class="line"></div><div class="line">/*定义锚链接，默认值是[]。有了锚链接，用户可以快速打开定位到某一页面。注意定义锚链接的时候，值不要和页面中任意的id或name相同，尤其在IE下，而且定义时不需要加#*/</div><div class="line">anchors: [&apos;page1&apos;, &apos;page2&apos;, &apos;page3&apos;, &apos;page4&apos;],</div><div class="line"></div><div class="line">/*是否显示导航，默认为false。如果设置为true，会显示小圆点，作为导航*/</div><div class="line">navigation: true,</div><div class="line"></div><div class="line">/*导航小圆点位置，可以设置为left或者right，默认值为right*/</div><div class="line">navigationPosition: &apos;right&apos;,</div><div class="line"></div><div class="line">/*navigationTooltips:导航小圆点的tooltips设置，默认为[],注意按照顺序设置*/</div><div class="line">navigationTooltips: [&apos;page1&apos;, &apos;page2&apos;, &apos;page3&apos;, &apos;page4&apos;],</div><div class="line"></div><div class="line">//是否显示当前页面的导航的tooltip信息，默认为false</div><div class="line">showActiveTooltip: true,</div><div class="line"></div><div class="line">//是否显示横向幻灯片的导航，默认为false</div><div class="line">slidesNavigation: true,</div><div class="line"></div><div class="line">//横向幻灯片导航的位置，默认为bottom，可以设置为top或bottom</div><div class="line">slidesNavPosition: &apos;bottom&apos;,</div><div class="line"></div><div class="line">//Scrolling</div><div class="line">//是否使用 CSS3 transforms 滚动，默认值为false</div><div class="line">css3: true,</div><div class="line"></div><div class="line">//滚动速度,默认为700  单位ms</div><div class="line">scrollingSpeed: 700,</div><div class="line"></div><div class="line">//是否使用插件的滚动方式，默认为true，变为false则会出现浏览器自带的滚动条，将不会按页滚动，而是按照滚动条的默认行为来滚动</div><div class="line">autoScrolling: true,</div><div class="line"></div><div class="line">//默认为true，决定是否将部分与视口相匹配。当设置为‘true’时，当前活动部分将始终填充整个视口。否则用户将在一个区段中随意停止。</div><div class="line">fitToSection: true,</div><div class="line"></div><div class="line">//默认为1000。如果` fittosection `设置为true，这延迟通过配置的毫秒进行拟合</div><div class="line">fitToSectionDelay: 1000,</div><div class="line"></div><div class="line">//是否包含滚动条，默认为false。设置为true，则出现浏览器自带的滚动条，页面滚动还是按页滚动，但滚动条的默认行为也有效</div><div class="line">scrollBar: false,</div><div class="line"></div><div class="line">//定义页面section滚动的动画方式，默认为easeInOutCubic,如果修改则需引入jquery.easings插件，或者jquery ui.</div><div class="line">easing: &apos;easeInOutCubic&apos;,</div><div class="line"></div><div class="line">//css3过渡效果，具体可参考http://www.w3schools.com/cssref/css3_pr_transition-timing-function.asp</div><div class="line">easingcss3: &apos;ease&apos;,</div><div class="line"></div><div class="line">//滚动到最底部后是否连续滚动回顶部，默认false</div><div class="line">loopBottom: false,</div><div class="line"></div><div class="line">//滚动到最顶部后是否连续滚动到底部，默认false</div><div class="line">loopTop: false,</div><div class="line"></div><div class="line">//横向slide幻灯片是否循环滚动，默认为true</div><div class="line">loopHorizontal: true,</div><div class="line"></div><div class="line">//是否循环滚动，默认为false。如果为true，则页面会循环滚动，它不会像loopTop和loopBottom那样出现跳动。（它和loopTop、loopBottom不兼容，不要同时设置）</div><div class="line">continuousVertical: false,</div><div class="line"></div><div class="line">//以下是fullpage.js &gt; = 2.8.3。更新的api</div><div class="line">//横向slide幻灯片是否循环滚动，默认为false，需要fullpage.js &gt; = 2.8.3。</div><div class="line">continuousHorizontal: false,</div><div class="line"></div><div class="line">//定义是否水平滑动的内滑块用鼠标滚轮或触摸板，默认为false，需要fullpage.js &gt; = 2.8.3。</div><div class="line">scrollHorizontally: false,</div><div class="line"></div><div class="line">//确定是否移动一个水平滑块将迫使滑块在其他部分在同一方向滑动。可能的值是“true”、“false”或带有交错部分的数组。需要fullpage.js &gt; = 2.8.3。参考案例http://alvarotrigo.com/fullPage/extensions/</div><div class="line">interlockedSlides: false,</div><div class="line"></div><div class="line">//启用或禁用拖动和弹段和幻灯片用鼠标或手指。需要fullpage.js &gt; = 2.8.9。</div><div class="line">dragAndMove: false,</div><div class="line"></div><div class="line">//滚动的距离是否是全屏，可以设置比例&lt;div class=&quot;section&quot; data-percentage=&quot;80&quot; data-centered=&quot;true&quot;&gt;需要fullpage.js &gt; = 2.8.8。</div><div class="line">offsetSections: false,</div><div class="line"></div><div class="line">//定义是否在离开滑块后重置每个滑块，需要fullpage.js &gt; = 2.8.3。</div><div class="line">resetSliders: false,</div><div class="line"></div><div class="line">//滑动时是否有褪色的效果，需要fullpage.js &gt; = 2.8.6。</div><div class="line">fadingEffect: false,</div><div class="line"></div><div class="line">//想在某些元素上滚动时避免自动滚动</div><div class="line">//normalScrollElements: &apos;#element1, .element2&apos;,</div><div class="line"></div><div class="line">//内容超过满屏后是否显示滚动条，默认为false</div><div class="line">scrollOverflow: false,</div><div class="line"></div><div class="line">//当设置为true时，当滚动条滚动到另一个垂直区段时，滚动条将滚动的内容滚动起来，在回到原来的区段，区段还是显示其内容的开始。参考案例http://alvarotrigo.com/fullPage/extensions/</div><div class="line">scrollOverflowReset: false,</div><div class="line"></div><div class="line">//使用scrollOverflow: true时，可以通过提供fullpage.js与iscroll.js选择你想使用自定义滚动行为。</div><div class="line">scrollOverflowOptions: null,</div><div class="line"></div><div class="line">//定义浏览器窗口宽度/高度的百分比，以及在导航到下一节/幻灯片时必须测量多远。默认为5。</div><div class="line">touchSensitivity: 5,</div><div class="line"></div><div class="line">//是否可以使用触摸板，使滚动条滚动。</div><div class="line">normalScrollElementTouchThreshold: 5,</div><div class="line"></div><div class="line">//值可能为：`top`, `bottom`, `null`.</div><div class="line">bigSectionsDestination: null,</div><div class="line"></div><div class="line">//Accessibility</div><div class="line">//是否使用键盘方向键导航</div><div class="line">keyboardScrolling: true,</div><div class="line"></div><div class="line">//锚链接是否可以控制滚动动画，默认为true。若为false，则通过锚链接定位到某个页面显示不再有动画效果。</div><div class="line">animateAnchor: true,</div><div class="line"></div><div class="line">//是否记录历史，默认true。可以记录页面滚动的历史，通过浏览器的前进后退来导航。</div><div class="line">recordHistory: true,</div><div class="line"></div><div class="line">//Design</div><div class="line">//是否使用幻灯片的控件箭头向右或向左移动。</div><div class="line">controlArrows: true,</div><div class="line"></div><div class="line">//每一页的内容是否垂直居中，默认为true</div><div class="line">verticalCentered: true,</div><div class="line"></div><div class="line">//可以为每一个section设置background-color属性</div><div class="line">sectionsColor: [&apos;yellowgreen&apos;, &apos;green&apos;, &apos;orange&apos;, &apos;red&apos;],</div><div class="line"></div><div class="line">//设置每一个section顶部和底部的padding，默认都是0。一般如果需要设置一个固定在顶部或者底部的菜单、导航、元素等，可以使用这两个配置项。</div><div class="line">//paddingTop: &apos;3em&apos;,</div><div class="line">//paddingBottom: &apos;10px&apos;,</div><div class="line"></div><div class="line">//固定的元素，默认为null。在页面滚动的时候，fixedElements设置的元素固定不动。</div><div class="line">fixedElements: &apos;#header, .footer&apos;,</div><div class="line"></div><div class="line">responsiveWidth: 0,</div><div class="line">responsiveHeight: 0,</div><div class="line"></div><div class="line">//当设置为“真”时，当响应模式被触发时，幻灯片将变成垂直部分。[Extension of fullpage.js]需要fullpage.js &gt;= 2.8.5.</div><div class="line">responsiveSlides: false,</div><div class="line"></div><div class="line">//定义是否使用视差背景对区段/幻灯片的影响。[Extension of fullpage.js]</div><div class="line">parallax: false,</div><div class="line"></div><div class="line">//使用视差背景时可以配置的参数</div><div class="line">parallaxOptions: &#123;</div><div class="line">	type: &apos;reveal&apos;,</div><div class="line">	percentage: 62,</div><div class="line">	property: &apos;translate&apos;</div><div class="line">&#125;,</div><div class="line"></div><div class="line">//Custom selectors</div><div class="line">//section的选择器，默认为.section。</div><div class="line">sectionSelector: &apos;.section&apos;,</div><div class="line"></div><div class="line">//slide的选择器，默认为.slide。</div><div class="line">slideSelector: &apos;.slide&apos;,</div><div class="line"></div><div class="line">//懒加载</div><div class="line">lazyLoading: true,</div><div class="line"></div><div class="line">//events</div><div class="line"></div><div class="line">/*1. 在我们离开一个section时，会触发一次此回调函数，接收index/nextIndex/和direction 3个参数</div><div class="line"> I.   index是离开的页面的序号，从1开始计算。</div><div class="line"> II.  nextIndex是滚动的目标页面的序号，从1开始计算</div><div class="line"> III. direction判断往上滚动还是往下滚动，值是up或down</div><div class="line">	2. 通过return false 可以取消滚动*/</div><div class="line">onLeave: function(index, nextIndex, direction) &#123;&#125;,</div><div class="line"></div><div class="line">/*1. 滚动到某一section，且滚动结束后，会触发一次此回调函数，函数接收anchorLink和index两个参数，anchorLink时锚链接的名称，index是序号，从1开始计算。</div><div class="line">	2. 我们可以根据anchorLink和index参数值的判断，触发相应的事件*/</div><div class="line">afterLoad: function(anchorLink, index) &#123;&#125;,</div><div class="line"></div><div class="line">// 页面结构生成后的回调函数，或者说是页面初始化完成后的回调函数</div><div class="line">afterRender: function() &#123;&#125;,</div><div class="line"></div><div class="line">//浏览器窗口尺寸改变后的回调函数</div><div class="line">afterResize: function() &#123;&#125;,</div><div class="line"></div><div class="line">afterResponsive: function(isResponsive) &#123;&#125;,</div><div class="line"></div><div class="line">// 滚动到某一幻灯片后的回调函数，与afterLoad类似</div><div class="line">afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex) &#123;&#125;,</div><div class="line"></div><div class="line">//在我们离开一个slide时，会触发一次此回调函数，与onLeave类似</div><div class="line">onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex) &#123;&#125;</div><div class="line"></div><div class="line">/*方法： 调用方法均为 $.fn.fullpage.xxx()</div><div class="line"></div><div class="line">1. moveSectionUp() / moveSectionDown()： 向上或向下滚动一页</div><div class="line">2. moveTo(section， slides)： 滚动到第几页， 第几个幻灯片， 注意， 页面是从1开始， 而幻灯片是从0开始。</div><div class="line">3. silentMoveTo(section, slide)： 和moveTo一样， 但是没有动画效果。</div><div class="line">4. moveSlideRight() / moveSlideLeft()： 幻灯片向右 / 左滚动</div><div class="line">5. setAutoScrolling(boolean)： 动态设置autoScrolling</div><div class="line">6. setLockAnchors： 动态设置lockAnchors</div><div class="line">7. setRecordHistory(boolean)： 动态设置recordHistory</div><div class="line">8. setScrollingSpeed(milliseconds)： 动态设置scrollingSpeed</div><div class="line">9. setAllowScrolling(bollean, [directions])： 添加或删除鼠标滚轮 / 滑动控制， 第一个参数true为启用， false</div><div class="line">为禁用， 后面的参数为方向， 取值包含all,up,down,left,right,可以使用多个， 逗号分割</div><div class="line">10. destroy(type)： 销毁fullpage特效， type可以不写， 或者使用all， 不写type， fullpage给页面添加的样式和html元素还在， 如果使用</div><div class="line">all， 则样式、 html等全部销毁， 页面恢复和不使用fullpage相同的效果</div><div class="line">11. reBeuild()： 重新更新页面和尺寸， 用于通果ajax请求后改变了页面结构之后， 重建效果。</div><div class="line"></div><div class="line">Lazy Loading </div><div class="line">&lt;img data - src = &apos;img.png&apos; &gt;</div><div class="line">&lt;video&gt;</div><div class="line">	&lt;source data - src = &apos;video.webm&apos; type = &apos;video/webm&apos; / &gt;</div><div class="line">&lt;/video &gt;*/</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1696,7 +1692,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
