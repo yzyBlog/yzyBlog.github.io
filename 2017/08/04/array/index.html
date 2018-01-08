@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="####数组一些常用方法（es5新增）  forEach() 遍历数组，并为每个元素调用传入的函数1234567891011121314var a = [1,2,3];var sum = 0;//传一个参数a.forEach(function(v)&amp;#123;	sum += v;&amp;#125;);console.log(sum);//6//传三个参数(元素值,索引,数组本身)a.forEach(fu">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-04T14:28:00.000Z">
+<meta property="og:updated_time" content="2018-01-08T03:04:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数组一些常用方法">
 <meta name="twitter:description" content="####数组一些常用方法（es5新增）  forEach() 遍历数组，并为每个元素调用传入的函数1234567891011121314var a = [1,2,3];var sum = 0;//传一个参数a.forEach(function(v)&amp;#123;	sum += v;&amp;#125;);console.log(sum);//6//传三个参数(元素值,索引,数组本身)a.forEach(fu">
@@ -337,7 +337,7 @@
 <p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var arr = [0,1,2,3,4]; </div><div class="line">arr.reduce(function (preValue,curValue,index,array) &#123; </div><div class="line">	return preValue + curValue;</div><div class="line">&#125;); //10</div></pre></td></tr></table></figure></p>
 <p>第一次回调: 0  1  1  [0,1,2,3,4]   返回值1<br>第二次回调: 1  2  2  [0,1,2,3,4]   返回值3<br>第三次回调: 3  3  3  [0,1,2,3,4]   返回值6<br>第四次回调: 6  4  4  [0,1,2,3,4]   返回值10</p>
 <p>提供一个初始值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var arr = [0,1,2,3,4]; </div><div class="line">arr.reduce(function (preValue,curValue,index,array) &#123; </div><div class="line">	return preValue + curValue; </div><div class="line">&#125;, 5); //15</div></pre></td></tr></table></figure></p>
-<p>第一次回调: 5    0    0  [0,1,2,3,4]   返回值5<br>第二次回调: 5    1    1  [0,1,2,3,4]   返回值6<br>第三次回调: 6    2    2  [0,1,2,3,4]   返回值8<br>第四次回调: 8    3    3  [0,1,2,3,4]   返回值11<br>第四次回调: 11  4    4  [0,1,2,3,4]   返回值15</p>
+<p>第一次回调: 5    0    0  [0,1,2,3,4]   返回值5<br>第二次回调: 5    1    1  [0,1,2,3,4]   返回值6<br>第三次回调: 6    2    2  [0,1,2,3,4]   返回值8<br>第四次回调: 8    3    3  [0,1,2,3,4]   返回值11<br>第四次回调: 11   4    4  [0,1,2,3,4]   返回值15</p>
 <p>实现数组的求和<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var arr = [1,2,3,4,5,6]; </div><div class="line">Array.prototype.sum = function ()&#123; </div><div class="line">	var sumResult = 0;</div><div class="line">	return this.reduce(function (preValue, curValue) &#123; </div><div class="line">		return sumResult = preValue + curValue; </div><div class="line">	&#125;); </div><div class="line">	return sumResult; </div><div class="line">&#125; </div><div class="line">arr.sum(); // 21</div></pre></td></tr></table></figure></p>
 <p>reduceRight()方法的功能和reduce()功能是一样的，不同的是reduceRight()从数组的末尾向前将数组中的数组项做累加。</p>
 <ul>
