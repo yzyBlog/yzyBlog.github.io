@@ -229,6 +229,129 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/15/jcanvas/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zongyi Yin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog_photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/15/jcanvas/" itemprop="url">jcanvas实现图片上传</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-15T14:29:55+08:00">
+                2018-01-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="jcanvas"><a href="#jcanvas" class="headerlink" title="jcanvas"></a>jcanvas</h3><p>官网：<a href="https://projects.calebevans.me/jcanvas/" target="_blank" rel="external">https://projects.calebevans.me/jcanvas/</a><br>中文翻译：<a href="http://asprain.cn/jCanvas/p843.htm" target="_blank" rel="external">http://asprain.cn/jCanvas/p843.htm</a></p>
+<h4 id="具体实现："><a href="#具体实现：" class="headerlink" title="具体实现："></a>具体实现：</h4><p>需要引入jcanvas.min.js，exif.js。 exif.js是修正图片带有exif的orientation信息的时候，在安卓上没办法正式显示的问题。<br>html:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;canvas-area&quot;&gt;</div><div class="line">    &lt;img class=&quot;fake-img&quot; src=&quot;http://pic03.babytreeimg.com/foto3/common_photo/original/2018/0115/c8f6c06398978870.png&quot; alt=&quot;&quot;&gt;</div><div class="line">    &lt;canvas class=&quot;cv&quot;&gt;&lt;/canvas&gt;</div><div class="line">    &lt;input type=&quot;file&quot; class=&quot;upload-file&quot; style=&quot;display: none;&quot;&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>css:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">.canvas-area &#123;</div><div class="line">  position: relative;</div><div class="line">  width: 4.74rem;</div><div class="line">  height: 4.74rem;</div><div class="line">  overflow: hidden;</div><div class="line">  border: solid 2px #000d41;</div><div class="line">&#125;</div><div class="line">.canvas-area .fake-img &#123;</div><div class="line">  position: absolute;</div><div class="line">  top: 0;</div><div class="line">  left: 0;</div><div class="line">  z-index: 2;</div><div class="line">  width: 100%;</div><div class="line">  height: 100%;</div><div class="line">&#125;</div><div class="line">.cv&#123;</div><div class="line">	width: 100%;</div><div class="line">	height: 100%;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>js:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div></pre></td><td class="code"><pre><div class="line">var $fileTag = $(&apos;.upload-file&apos;),</div><div class="line">		oCanvas = $(&apos;.cv&apos;),</div><div class="line">		oUploadBtn = $(&apos;.fake-img&apos;);</div><div class="line">	var c_width = oUploadBtn.width(),</div><div class="line">		c_height = oUploadBtn.height();</div><div class="line"> 	var img_times = 1;</div><div class="line">	var c_center = c_width;</div><div class="line">	var _exifInfo = &#123;&#125;;</div><div class="line">	//让图片高清显示</div><div class="line">	</div><div class="line">	oCanvas.attr(&#123;&apos;width&apos;:c_width*img_times,&apos;height&apos;:c_width*img_times&#125;);</div><div class="line">	oUploadBtn.click(function () &#123;</div><div class="line">		g_upload_img();</div><div class="line">	&#125;);</div><div class="line">	/*图片上传*/</div><div class="line">	function g_upload_img() &#123;</div><div class="line">		$fileTag.click();</div><div class="line">		$fileTag[0].onchange = function () &#123;</div><div class="line">			var file = $fileTag[0].files[0];</div><div class="line">			var fileReader = new FileReader();</div><div class="line">			fileReader.onloadend = function () &#123;</div><div class="line">				if (fileReader.readyState == fileReader.DONE) &#123;</div><div class="line">					var aimg=new Image();</div><div class="line">					aimg.src = fileReader.result;</div><div class="line">					$(aimg).load(function() &#123;</div><div class="line">						EXIF.getData(this, function()&#123;</div><div class="line">							_exifInfo = EXIF.getAllTags(this);</div><div class="line">						&#125;);</div><div class="line"></div><div class="line">						var _rotate = 0;</div><div class="line">						var _DragToAxis = null;</div><div class="line">						// exif.js修正图片带有exif的orientation信息的时候，在安卓上没办法正式显示的问题。假如图片是ios及数码相机拍摄，那么它就会带有exif信息，其中一个叫orientation的方向信息，这个方向是你拍摄的方向，假如有这个方向的话，在pc，安卓及ios上面的显示都不一样。</div><div class="line">						switch (_exifInfo.Orientation) &#123;</div><div class="line">							case 7:</div><div class="line">							case 8:</div><div class="line">								_rotate = -90;</div><div class="line">								break;</div><div class="line">							case 3:</div><div class="line">							case 4:</div><div class="line">								_rotate = 180;</div><div class="line">								break;</div><div class="line">							case 5:</div><div class="line">							case 6:</div><div class="line">								_rotate = 90;</div><div class="line">								break;</div><div class="line">						&#125;</div><div class="line"></div><div class="line">						var max_width,max_height;					</div><div class="line">						max_width = c_width &gt; aimg.width ? aimg.width:c_width;</div><div class="line">						max_height = c_height &gt; aimg.height ? aimg.height:c_height;</div><div class="line">						var c_width = oUploadBtn.width(),</div><div class="line">							c_height = oUploadBtn.height();</div><div class="line">							//ratiow：上传的图片的宽度与canvas宽度的比例</div><div class="line">							//ratioh：上传的图片的高度与canvas高度的比例</div><div class="line">						var ratiow  = aimg.width/c_width,</div><div class="line">							ratioh = aimg.height/c_height;</div><div class="line">						var c_h = c_height, c_w = c_width,ratioend=1;</div><div class="line">						if(ratiow&gt;ratioh)</div><div class="line">						&#123;</div><div class="line">							c_height = ratiow*c_height;</div><div class="line">							c_width = aimg.width;</div><div class="line">							ratioend = ratiow;</div><div class="line">							scale_c = 1/ratioh;</div><div class="line">						&#125;</div><div class="line">						else&#123;</div><div class="line">							c_width = ratioh*c_width;</div><div class="line">							c_height = aimg.height;</div><div class="line">							ratioend = ratioh;</div><div class="line">							scale_c = 1/ratiow;</div><div class="line">						&#125;</div><div class="line">						if(c_width&lt;=c_w&amp;&amp;c_height&lt;=c_h)</div><div class="line">						&#123;</div><div class="line">							c_width = c_w;</div><div class="line">							c_height = c_h;</div><div class="line">							ratioend = 1;</div><div class="line">							scale_c = 1; </div><div class="line">						&#125;</div><div class="line">						oCanvas.attr(&#123;&apos;width&apos;:c_width*1,&apos;height&apos;:c_height*1&#125;);</div><div class="line">						// 永久删除图层</div><div class="line">						oCanvas.removeLayer(&apos;myBox&apos;).drawLayers();</div><div class="line">						oCanvas.clearCanvas().drawImage(&#123;</div><div class="line">							layer: true,//jCanvas绘制的东西是否应该加为一个图层</div><div class="line">							name: &apos;myBox&apos;,//关联到图层的名称</div><div class="line">							source: fileReader.result,//要绘制的图像的源</div><div class="line">							x: c_width/2,//一个形状在画布上的x位置</div><div class="line">							y: c_height/2,//一个形状在画布上的y位置</div><div class="line">							width: c_w*ratiow*ratioend,//形状的宽度</div><div class="line">							height: c_h*ratioh*ratioend,//形状的高度</div><div class="line">							draggable: true,//是否可拖曳</div><div class="line">							rotate: _rotate,//旋转的角度</div><div class="line">							scale: scale_c//画布的宽度和高度的倍数（用于缩放）</div><div class="line">						&#125;);</div><div class="line"></div><div class="line">					&#125;)</div><div class="line">				&#125;</div><div class="line">			&#125;;</div><div class="line">			fileReader.readAsDataURL(file);</div><div class="line">		&#125;;</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/05/localStorage-sessionStorage/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1499,145 +1622,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/14/regExp/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zongyi Yin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog_photo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="我的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/14/regExp/" itemprop="url">正则表达式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-14T20:58:55+08:00">
-                2017-07-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p><strong>正则表达式</strong>是一种在字符串数据里表示模式的语言。它们组成了一种小型且独立的语言，镶入在JavaScript里。这种语言非常的简洁，尽管其可读性不是很强—大型正则表达式往往就像卡通人物的咒语一样。总之，它们是一种很强大的工具，能够真正简化字符串处理程序。</p>
-<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><p>&emsp;&emsp;与将字符串写在引号里的方式相同，正则表达式写在斜杠（/）之间。字符串的search方法与indexOf类似，indexOf返回找到参数的位置，但search的参数是一个正则表达式而非字符串：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&quot;zhengzebiaodashi&quot;.search(/biao/);  </div><div class="line">=&gt;  7</div></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp;由于斜杠通常表明了正则表达式的结束，表达式里的斜杠则必须通过反斜杠进行转义。例如，我们定义一个正则表达式，它只包含一个斜杠：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var reg = /\//;</div><div class="line">&quot;ab/cd&quot;.search(reg);</div><div class="line">=&gt; 2</div></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp;正则表达式指定的模式可以完成一些字符串不能完成的工作。例如，它们允许一些元素匹配多个单字符串。</p>
-<p>###匹配字符集<br>&emsp;&emsp;我们需要在一段字符串里查找第一个星号或者左大括号。可以用正则表达式来完成这项工作，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var reg1 = /[\&#123;\*]/;</div><div class="line">var story = &quot;Adversity *successfully* overcome is the highest glory.&quot;;</div><div class="line">story.search(reg1);</div><div class="line">=&gt; 10</div></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp;在正则表达式里，中括号“[“和“]”有着特殊的意义。它包含一个字符列表，只是其中一个字符被找到即可被匹配上。大多数标点符号在正则表达式中都有特殊的意义，因此，如果要用它们来表示实际字符的话，最好用反斜杠对齐转义。<br>&emsp;&emsp;有些字符在正则表达式里指的是整个字符集。点（.）用来表示“任何不是换行符的字符”；转义d（/d）表示“任意数字”；转义w（/w）匹配任何单词（也就是任何英文、数字和下划线构成的字符）。转义s（/s）匹配任何空字符（例如Tab、换行和空格）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var reg2 = /\s\d\s/;</div><div class="line">&quot;1a 2 3b&quot;.search(reg2);</div><div class="line">=&gt; 2</div></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp;可以用大写字符替换相应的\d、\w、和\s来反转正则表达式的意义。例如，\S匹配任何不是空字符串的字符，\W匹配任何非单词字符。等价于“[^A-Za-z0-9_]”，\D匹配一个非数字字符。等价于[^0-9]。使用中括号[和]时，反转模式可以以^字符开始：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var notABCReg = /[^ABC]/;</div><div class="line">&quot;ABCBACCBBADABC&quot;.search(notABC);</div><div class="line">=&gt; 10</div></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp;根据我们现在所知道的，可以编写一个匹配XX/XX/XXXX格式日期的正则表达式（这里的X是数字）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var dataReg = /\d\d\/\d\d\/\d\d\d\d/;</div><div class="line">&quot;born 15/11/2003 (mother Spot): white Fang&quot;.search(dataReg);</div><div class="line">=&gt; 5</div></pre></td></tr></table></figure></p>
-<h4 id="匹配单词和字符边界"><a href="#匹配单词和字符边界" class="headerlink" title="匹配单词和字符边界"></a>匹配单词和字符边界</h4><p>&emsp;&emsp;有时需要确定一个模拟以待定字符开始或者以待定字符结束。可以使用特殊字符^和\$来完成，^ 字符匹配字符的开头，而 \$字符匹配字符的结尾：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/a/.test(&quot;cat&quot;);</div><div class="line">=&gt; true</div><div class="line">/^a$/.test(&quot;cat&quot;);</div><div class="line">=&gt; flase</div><div class="line">/^a$/.test(&quot;about&quot;);</div><div class="line">=&gt; false</div><div class="line">/^a/.test(&quot;about&quot;);</div><div class="line">=&gt; true</div></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp;第一个正则表达式匹配任何包含字符a的字符串，而第二个只能匹配字符串“a”，第三个匹配以字符a开始的字符串。需要注意，正则表达是对象，并且拥有方法。它的test方法返回布尔值，表示给定的字符串是否匹配表达式。<br>&emsp;&emsp;转义字符\b可以匹配“单词边界”———它可以是标点符号、空格、字符的开头或结尾：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">/cat/.test(&quot;concatenate&quot;);</div><div class="line">=&gt; true</div><div class="line">/\bcat\b/.test(&quot;concatenate&quot;);</div><div class="line">=&gt; false</div></pre></td></tr></table></figure></p>
-<h4 id="重复模式"><a href="#重复模式" class="headerlink" title="重复模式"></a>重复模式</h4><p>&emsp;&emsp;在正则表达式里，重复表示子模式也是可以的。在元素后面跟一个星号（*）表示可以重复匹配任意次数（包括零次）；元素后面跟一个加号（+）要求至少匹配一次；元素后面跟一个问号（?）表示该元素可选（它可能出现零次或一次）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var reg3 = /\(.*\)/;</div><div class="line">&quot;A book (that) remains shut is but a block.&quot;.search(reg3);</div><div class="line">=&gt; 7</div></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp;在必要的时候，可以使用花括号来指定一个元素可能发生的次数。花括号里只有一个数字（例如{4}）确定了元素必须出现的次数。花括号之间有两个数字，并且两个数字中间有逗号（{3,10}）时，表示元素至少要出现第一个数字的次数至少（这里是3次），而且最多只能出现第二个数字的次数（这里是10次）；类似地，{2, }表示要出现两次或两次以上，而{ , 4}则表示出现的次数要小于4次。<br>&emsp;&emsp;下面是一个更灵活的匹配日期的模式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var dataReg = /\d&#123;1,2&#125;\/\d\d?\/\d&#123;4&#125;/;</div><div class="line">&quot;born 15/11/2003 (mother Spot): white Fang&quot;.search(dataReg);</div><div class="line">=&gt; 5</div><div class="line">表达式/\d&#123;1,2&#125;/和/\d\d?/是同一件事情的两种表示方法：“一个或两个数字”。</div></pre></td></tr></table></figure></p>
-<h4 id="子表达式分组"><a href="#子表达式分组" class="headerlink" title="子表达式分组"></a>子表达式分组</h4><p>&emsp;&emsp;通常需要在同一个表达式里，对多个字符使用像*或+这样的特殊字符。可以使用小括号对表达式的一部分进行分组，然后用整个分组进行匹配。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var reg4 = /boo(abc+)+/i;</div><div class="line">reg4.test(&quot;booabcabcbooabc&quot;);</div><div class="line">=&gt; true</div></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp;模式abc+允许ab加一个或多个c字符。(abc+)+则允许该模式整体被重复一次或多次。<br>&emsp;&emsp;需要注意正则表达式结尾的i字符。在关闭斜后面，可以添加可选项。这里的表示该表达式不区分大小写，允许小写字母b匹配字符串里的大写字符B。还有个“全局”的g。</p>
-<h4 id="多选一"><a href="#多选一" class="headerlink" title="多选一"></a>多选一</h4><p>&emsp;&emsp;对于更高级的分支模式，可以使用竖线（|）表示允许模式在多个元素中选择一个。实力如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var reg5 = /\b(sacred|holy) (cow|bovine|bull|taurus)\b/i;</div><div class="line">reg5.test(&quot;Sacred bovine!&quot;);</div><div class="line">=&gt; true</div><div class="line">var reg5 = /\b(sacred|holy)(cow|bovine|bull|taurus)\b/i;</div><div class="line">reg5.test(&quot;Sacred bovine!&quot;);</div><div class="line">=&gt; false</div></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp;该模式将匹配任何单词，包含后面跟着cow、bovine、bull或taurus四个单词中的任何一个字符的scared或holy。这里需要使用括号，否则只会在sacred、holycow、bovine等单词之间进行选择。</p>
-<h3 id="匹配与替换"><a href="#匹配与替换" class="headerlink" title="匹配与替换"></a>匹配与替换</h3><h4 id="匹配方法"><a href="#匹配方法" class="headerlink" title="匹配方法"></a>匹配方法</h4><p>&emsp;&emsp;字符串有一个match方法，接收正则表达式作为参数。如果匹配失败就返回null；如果匹配成功则返回匹配的字符串组成的数组。通过下面的示例来了解这一实现过程：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&quot;No&quot;.match(/yes/i);</div><div class="line">=&gt; null</div><div class="line">&quot;…yes&quot;.match(/yes/i);</div><div class="line">=&gt; [&quot;yes&quot;]</div><div class="line">&quot;Giant Ape&quot;.match(/giant (\w+)/i);</div><div class="line">=&gt; [&quot;Giant Ape&quot;,&quot;Ape&quot;]</div></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp;返回数组的第一个元素总是匹配整个模式的字符串。第三个示例说明，模式里有括号时，括号匹配的部分将添加到该数组。通常，这使提取字符串变得非常容易。</p>
-<h4 id="正则表达式和替换方法"><a href="#正则表达式和替换方法" class="headerlink" title="正则表达式和替换方法"></a>正则表达式和替换方法</h4><p>&emsp;&emsp;字符串值的replace方法可以接收一个正则表达式作为第一个参数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&quot;Borobudur&quot;.replace(/[ou]/g,&quot;a&quot;);</div><div class="line">=&gt; Barabadar</div></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp;请注意，正则表达式后面的字符g代表“全局”，这意味着匹配该模式的字符的每个部分都应该被替换掉。当省略g时，只有第一个字符o被替换，这是一种常见的错误。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1692,7 +1676,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
