@@ -229,6 +229,245 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/15/timechange/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zongyi Yin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog_photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/15/timechange/" itemprop="url">react秒转换成分</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-15T11:01:32+08:00">
+                2018-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="react秒转换成分"><a href="#react秒转换成分" class="headerlink" title="react秒转换成分"></a>react秒转换成分</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">class DurationApi &#123;  </div><div class="line">    /**  </div><div class="line">     * 将输入的秒数  </div><div class="line">     * @return &#123;string&#125; 转换后的01:23  </div><div class="line">     */  </div><div class="line">    static format(ms) &#123;  </div><div class="line">        let fmt = &apos;&apos;;  </div><div class="line">        let minute = parseInt(ms, 10);  </div><div class="line">        let second = 0;  </div><div class="line">  </div><div class="line">        if (minute &lt;= 60) &#123;  </div><div class="line">            fmt = minute &lt; 10 ? `0$&#123;minute&#125;` : minute;  </div><div class="line">        &#125; else &#123;  </div><div class="line">            second = Math.floor(minute / 60);  </div><div class="line">            second = second &lt; 10 ? `0$&#123;second&#125;` : second;  </div><div class="line">            minute = Math.floor(minute % 60);  </div><div class="line">            minute = minute &lt; 10 ? `0$&#123;minute&#125;` : minute;  </div><div class="line">            fmt = `$&#123;second&#125;:$&#123;minute&#125;`;  </div><div class="line">        &#125;  </div><div class="line">  </div><div class="line">        return fmt;  </div><div class="line">    &#125;  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line">module.exports = DurationApi;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/15/react_timestamp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zongyi Yin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog_photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/15/react_timestamp/" itemprop="url">时间戳转换</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-15T11:01:32+08:00">
+                2018-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="时间戳转换"><a href="#时间戳转换" class="headerlink" title="时间戳转换"></a>时间戳转换</h4><p>后端返回前端日期时间，一般给你的都是时间戳，然后前端展示需要转换成需要格式。以下是我开发中常遇到需要转换成的格式，看代码。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">class DateApi &#123;</div><div class="line">    /**</div><div class="line">     * 将输入的毫秒字符串or毫秒数转换成指定的字符串格式</div><div class="line">     * @param &#123;string&#125; msStr 毫秒字符串 or 毫秒数</div><div class="line">     * @param &#123;string&#125; format yyyy-MM-dd or yyyy-MM-dd hh:mm:ss</div><div class="line">     * @return &#123;string&#125; 转换后的字符串</div><div class="line">     */</div><div class="line">    static format(msStr, format) &#123;</div><div class="line">        const date = new Date(msStr / 1);</div><div class="line">        let fmt = format;</div><div class="line"></div><div class="line">        const obj = &#123;</div><div class="line">            &apos;M+&apos;: date.getMonth() + 1, // 月份</div><div class="line">            &apos;d+&apos;: date.getDate(), // 日</div><div class="line">            &apos;h+&apos;: date.getHours(), // 小时</div><div class="line">            &apos;m+&apos;: date.getMinutes(), // 分</div><div class="line">            &apos;s+&apos;: date.getSeconds(), // 秒</div><div class="line">            &apos;q+&apos;: Math.floor((date.getMonth() + 3) / 3), // 季度</div><div class="line">            S: date.getMilliseconds(), // 毫秒</div><div class="line">        &#125;;</div><div class="line">        if (/(y+)/.test(fmt)) &#123;</div><div class="line">            fmt = fmt.replace(RegExp.$1, (String(date.getFullYear())).substr(4 - RegExp.$1.length));</div><div class="line">        &#125;</div><div class="line">        const keys = Object.keys(obj);</div><div class="line">        for (let i = 0; i &lt;= keys.length; i += 1) &#123;</div><div class="line">            const k = keys[i];</div><div class="line">            if (new RegExp(`($&#123;k&#125;)`).test(fmt)) &#123;</div><div class="line">                fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (obj[k]) : ((`00$&#123;obj[k]&#125;`).substr((String(obj[k])).length)));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        return fmt;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 获得传入的秒字符串msStr距离现在时间的字符串，格式为 昨天 今天 明天 当前年3月4日 其余2000-01-01</div><div class="line">     * @param &#123;string&#125; msStr 毫秒字符串</div><div class="line">     * @return &#123;string&#125; 可以显示用的字符串</div><div class="line">     */</div><div class="line">    static format2(msStr, showYear) &#123;</div><div class="line">        let ms = new Date(DateApi.format(msStr, &apos;yyyy/MM/dd&apos;)).getTime() / 1000;</div><div class="line">        const now = new Date(DateApi.format(new Date().getTime(), &apos;yyyy/MM/dd&apos;)).getTime() / 1000;</div><div class="line">        ms = now - ms;</div><div class="line"></div><div class="line">        const min = 60;</div><div class="line">        const hour = 60 * min;</div><div class="line">        const day = 24 * hour;</div><div class="line"></div><div class="line">        if (ms === 0) &#123;</div><div class="line">            return &apos;今天&apos;;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        if (ms === day) &#123;</div><div class="line">            return &apos;昨天&apos;;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        if (ms === -day) &#123;</div><div class="line">            return &apos;明天&apos;;</div><div class="line">        &#125;</div><div class="line"></div><div class="line"></div><div class="line">        const date = new Date((msStr / 1));</div><div class="line">        const nowYear = new Date().getFullYear();</div><div class="line">        const year = date.getFullYear();</div><div class="line">        const month = date.getMonth() + 1;</div><div class="line"></div><div class="line">        if (showYear === false &amp;&amp; year === nowYear) &#123;</div><div class="line">            return `$&#123;month&#125;月$&#123;date.getDate()&#125;日`;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        return `$&#123;date.getFullYear()&#125;年$&#123;month&#125;月$&#123;date.getDate()&#125;日`;</div><div class="line">    &#125;</div><div class="line">    /**</div><div class="line">    *获取当前天数之前或者之后的日期</div><div class="line">    *@num 之前或者之后多少天数 - 表示之前</div><div class="line">    */</div><div class="line">    static getDate(num, format) &#123;</div><div class="line">        const today = new Date();</div><div class="line">        const targetday = today.getTime() + (1000 * 60 * 60 * 24 * num);</div><div class="line">        const target = new Date();</div><div class="line">        target.setTime(targetday);</div><div class="line">        if (format) &#123;</div><div class="line">            return this.format(target.getTime(), format);</div><div class="line">        &#125;</div><div class="line">        return target;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">module.exports = DateApi;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/11/border-1px/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1265,319 +1504,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/04/vim/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zongyi Yin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog_photo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="我的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/04/vim/" itemprop="url">vim常用命令总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-04T19:48:55+08:00">
-                2017-11-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>打开文件 vim xxxx(文件名)   vim index.js<br>保存  :w<br>退出 :q<br>保存退出 :wq<br>强制退出    :q!</p>
-<hr>
-<p>###1.删除字符 x<br>要删除一个字符，只需要将光标移到该字符上按下“x”。</p>
-<p>###2.删除一行 dd<br>删除一整行内容使用“dd”命令。删除后下面的行会移上来填补空缺。</p>
-<p>###3.删除换行符 J<br>在vim中你可以把两行合并为一行，也就是说两行之间的换行符被删除了。命令是”J”。</p>
-<p>###4.撤销 u<br>如果你误删了过多的内容。显然你可以再输入一遍，但是命令”u” 更简便，它可以撤消上一次的操作。</p>
-<p>###5.重做<br>如果你撤消了多次，你还可以用CTRL-R(重做)来反转撤消的动作。换句话说，它是对撤消的撤消。撤消命令还有另一种形式，”U”命令，它一次撤消对一行的全部操作。第二次使用该命令则会撤消前一个”U”的操作。用”u”和CTRL-R你可以找回任何一个操作状态。</p>
-<p>###6.追加<br>“i”命令可以在当前光标之前插入文本。<br>“a”命令可以在当前光标之后插入文本。<br>“o”命令可以在当前行的下面另起一行，并使当前模式转为Insert模式。<br>“O”命令(注意是大写的字母O)将在当前行的上面另起一行。</p>
-<p>###7.使用命令计数<br>假设你要向上移动9行。这可以用”kkkkkkkkk”或”9k”来完成。删除3个字符可以用”3x”。</p>
-<p>###8.退出<br>要退出Vim，用命令”ZZ”。该命令保存当前文件并退出Vim。</p>
-<p>###9.放弃编辑<br>丢弃所有的修改并退出，用命令”:q!”。用”:e!”命令放弃所有修改并重新载入该文件的原始内容。</p>
-<p>###10.以Word为单位的移动<br>使用”w”命令可以将光标向前移动一个word的首字符上；比如”3w”将光标向前移动3个words。”b”命令则将光标向后移动到前一个word的首字符上。<br>“e”命令会将光标移动到下一个word的最后一个字符。命令”ge”，它将光标移动到前一个word的最后一个字符上。</p>
-<p>###11.移动到行首或行尾<br>“\$”命令将光标移动到当前行行尾。”^”命令将光标移动到当前行的第一个非空白字符上。”0”命令则总是把光标移动到当前行的第一个字符上。”\$”命令还可接受一个计数，如”1\$”会将光标移动到当前行行尾，”2\$”则会移动到下一行的行尾，如此类推。”0”命令却不能接受类似这样的计数，命令”^”前加上一个计数也没有任何效果。</p>
-<p>###12.移动到指定字符上<br>命令”fx”在当前行上查找下一个字符x（向右方向），可以带一个命令计数”F”命令向左方向搜索。”tx”命令形同”fx”命令，只不过它不是把光标停留在被搜索字符上，而是在它之前的一个字符上。提示：”t”意为”To”。该命令的反方向版是”Tx”。这4个命令都可以用”;”来重复。以”,”也是重复同样的命令，但是方向与原命令的方向相反。</p>
-<p>###13.以匹配一个括号为目的移动<br>用命令”%”跳转到与当前光标下的括号相匹配的那一个括号上去。如果当前光标在”(“上，它就向前跳转到与它匹配的”)”上，如果当前在”)”上，它就向后自动跳转到匹配的”(“上去。</p>
-<p>###工作上常用到的<br>查找  / </p>
-<p>最后一行 shift +g      《》 G</p>
-<p>第一行    gg</p>
-<p>跳转到 第 n行     ngg</p>
-<p>  %s/\r//g       去掉 ^m</p>
-<p>%s/\t/\            替换空格 </p>
-<p> dd：剪切当前行</p>
-<p> 4 ndd：n表示大于1的数字，剪切n行</p>
-<p>yy：复制当前行</p>
-<p>nyy：n表示大于1的数字，复制n行</p>
-<p>P 粘贴</p>
-<p>ctrl z  退出到终端            fg 1、2、3 跳转vim打开的文件（打开多个文件时）</p>
-<p>$ npm -g install js-beautify</p>
-<p>$ js-beautify foo.js</p>
-<p>:%s/\r//g                   : 删除DOS方式的回车^M</p>
-<p>:%s=  *$==                  : 删除行尾空白</p>
-<p>:%s/ *$// 去掉行尾的所有空格。</p>
-<p>:%s/\t/    /g     tab替换成空格。批量替换</p>
-<p>vimgrep /pattern/ %           在当前打开文件中查找</p>
-<p>vimgrep /pattern/ *             在当前目录下查找所有</p>
-<p>vimgrep /pattern/ **            在当前目录及子目录下查找所有</p>
-<p>vimgrep /pattern/ *.c          查找当前目录下所有.c文件</p>
-<p>vimgrep /pattern/ <em>*/</em>         只查找子目录</p>
-<p>brew install vim –with-lua –with-override-system-vim   vim 升级</p>
-<p>批量注释</p>
-<p>ctrl+v 进入列编辑模式,向下或向上移动光标,把需要注释的行的开头标记起来,然后按大写的I(shift+i),再插入注释符,比如”//“,再按Esc,就会全部注释了</p>
-<p>ctrl+v     选择    shiit+i    //    esc</p>
-<p>批量去掉注释</p>
-<p>ctrl+v,进入列编辑模式,横向选中列的个数(如”//“注释符号,需要选中两列),然后按d, 就会删除注释符号</p>
-<p>删除列</p>
-<p>1.光标定位到要操作的地方。</p>
-<p>2.CTRL+v 进入“可视 块”模式，选取这一列操作多少行。</p>
-<p>3.d 删除。</p>
-<p>插入列</p>
-<p>插入操作的话知识稍有区别。例如我们在每一行前都插入”() “：</p>
-<p>1.光标定位到要操作的地方。</p>
-<p>2.CTRL+v 进入“可视 块”模式，选取这一列操作多少行。</p>
-<p>3.SHIFT+i(I) 输入要插入的内容。</p>
-<p>4.ESC 按两次，会在每行的选定的区域出现插入的内容。</p>
-<p>###快捷命令</p>
-<p>x 删除当前光标下的字符(“dl”的快捷命令)<br>X 删除当前光标之前的字符(“dh”的快捷命令)<br>D 删除自当前光标至行尾的内容(“d$”的快捷命令)<br>dw 删除自当前光标至下一个word的开头<br>db 删除自当前光标至前一个word的开始<br>diw 删除当前光标所在的word(不包括空白字符)<br>daw 删除当前光标所在的word(包括空白字符)<br>dG 删除当前行至文件尾的内容<br>dgg 删除当前行至文件头的内容<br>如果你用”c”命令代替”d”这些命令就都变成更改命令。使用”y”就是yank命令，如此类推。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/24/git/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zongyi Yin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog_photo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="我的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/24/git/" itemprop="url">git常用命令总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-24T20:00:55+08:00">
-                2017-10-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>git clone xxx  下载到本地</p>
-<p>git remote -v 查看远程仓库地址</p>
-<p>git checkout xx分支（切换分支）</p>
-<p>git log </p>
-<p>git log  -oneline</p>
-<p>git status </p>
-<p>git add    git add *</p>
-<p>$ git commit -m “hello world”  提交</p>
-<p> git commit -a -m ‘’  保存并提交</p>
-<p>git checkout – softgames_game.js    可以丢弃工作区的修改：</p>
-<p>git branch 查看分支</p>
-<p>git pull 获取远程分支。。。。。。。。。。</p>
-<p>git branch -r 查看远程分支</p>
-<p>git branch test   创建分支</p>
-<p>git branch test  切换分支</p>
-<p>git  pull  origin  <branch></branch></p>
-<p>git push origin <branch></branch></p>
-<p>git reset –hard FETCH_HEAD 撤销到最近</p>
-<p>###工作上常用到的<br>git checkout dev<br>git pull<br>git checkout -b 170724_queqiao_v1_dev dev<br><em>//分支形式:170724_queqiao_v1_dev</em><br>git status<br>git commit -am f<br>git push origin 170724_queqiao_v1_dev<br>arc diff<br>git pull origin 170724_queqiao_v1_dev<br>git push origin 170724_queqiao_v1_dev</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1632,7 +1558,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
